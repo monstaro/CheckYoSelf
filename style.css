@@ -172,35 +172,62 @@ header {
  .main-card-background {
    width: 30%;
    background-color: #FAFDFF;
- }
+   border: 2px solid #C7D3D8;
+  }
 
-.main-card-list {
-  width: 30%;
-  height: auto;
-}
+
 
 .main-card-title {
   padding-top: 2%;
   padding-left: 2%;
+  padding-bottom: 2%;
 }
 
-.bullet-points {
+
+/* .card-task-title {
+  padding-bottom: 2%;
+} */
+
+
+.main-task-checkbox {
   list-style-type: none;
-  list-style-image:  src("/images/checkbox_active.svg");
+  display: inline;
+  /* list-style-image: url("./images/checkbox-active.svg"); */
+}
+
+.main-task-items {
+  display: flex;
+}
+
+.main-task-icons {
+  width: 7%;
+  padding: 10%;
+}
+
+.main-task-text {
+
 }
 
 .main-card-buttons {
   display: flex;
   justify-content: space-between;
   padding: 10%;
+  height: auto;
 }
 
 
 .card-button-urgent {
-  background-image: url("/images/urgent.svg");
+  width: 15%;
+  background: transparent;
+  border: none;
 }
 
 .card-button-delete {
-  background-image:
-url("images/delete/svg")
+  width: 15%;
+  background: transparent;
+  border: none;
+}
+
+.card-button-text {
+  text-transform: uppercase;
 }
