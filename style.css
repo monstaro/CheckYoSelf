@@ -49,3 +49,18 @@ body {
 .toDoCreator-taskList-checkbox {
   width: 10%;
 }
+
+.todoCreator-taskInput-itemInputLabel {
+  color: #f3f6f7;
+  font-size: .5 em;
+  font-weight: 800;
+  align-self: flex-start;
+  margin: 3em auto 0 1em;
+}
+.todoCreator-itemInput-textInput {
+  border: solid 2px #1f1f3d;
+  width: 82%;
+  padding: 5%;
+  border-radius: 3%;
+  margin: 0 1em 2em 1em;
+}
