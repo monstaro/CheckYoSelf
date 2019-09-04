@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  background-color: #1f1f3d;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.header-title {
+  color: #ffffff;
+  font-family: "Open-Sans", sans-serif;
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 3em;
+  padding: 10 0;
+}
+
+.yo {
+  color: #ffc30c;
+}
+
+.header-searchbar-buttonAndInput {
+  display: inline-block;
+  width: 31%;
+}
+
+.header-searchbar-button {
+  background: url("./images/search.svg");
+  background-size: cover;
+  background-position: center;
+  background-color: #f3f6f7;
+  border-radius: 5%;
+  padding: 15%;
+}
+
