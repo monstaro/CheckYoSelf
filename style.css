@@ -3,6 +3,10 @@
   padding: 0;
 }
 
+body {
+  font-family: 'Open Sans';
+}
+
 header {
   display: flex;
   background-color: #1f1f3d;
@@ -51,4 +55,62 @@ header {
   padding: 0%;
   align-self: center;
   width: 55%;
+}
+
+.sidebar {
+  width: 33%;
+  background-color: #587a8a;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.sidebar-toDoCreator-inputsAndList {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+
+/* .sidebar-toDoCreator-taskInput {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+} */
+
+.todoCreator-taskInput-textInputLabel {
+  color: #f3f6f7;
+  font-size: .5 em;
+  font-weight: 800;
+  align-self: flex-start;
+  margin: 3em auto 0 1em;
+}
+
+.todoCreator-taskInput-textInput {
+  border: solid 2px #1f1f3d;
+  width: 82%;
+  padding: 5%;
+  border-radius: 3%;
+  margin: 0 1em 2em 1em;
+}
+
+.toDoCreator-taskList-checkbox {
+  width: 10%;
+}
+
+.todoCreator-taskInput-itemInputLabel {
+  color: #f3f6f7;
+  font-size: .5 em;
+  font-weight: 800;
+  align-self: flex-start;
+  margin: 3em auto 0 1em;
+}
+.todoCreator-itemInput-textInput {
+  border: solid 2px #1f1f3d;
+  width: 82%;
+  padding: 5%;
+  border-radius: 3%;
+  margin: 0 1em 2em 1em;
 }
