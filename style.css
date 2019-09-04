@@ -1,7 +1,6 @@
 * {
   margin: 0;
   padding: 0;
-  border: 1px red solid;
 }
 
 body {
@@ -60,6 +59,7 @@ header {
 
 .sidebar-and-main {
   display: flex;
+  height: 1000px;
 }
 .sidebar {
   width: 33%;
@@ -99,6 +99,13 @@ header {
   border-radius: 3%;
   margin: 0 1em 2em 1em;
 }
+
+.sidebar-toDoCreator-taskList {
+  height: 200px;
+  overflow: scroll;
+}
+/* Revisit above */
+
 
 .toDoCreator-taskList-fullList {
   display: inline;
@@ -176,12 +183,13 @@ header {
 
  /* CARDS */
 
- /* .main-card-background {
-   width: 30%;
-   height: 100%;
-   background-color: #FAFDFF;
-   border: 2px solid #C7D3D8;
-  } */
+.main-card-background {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow: scroll;
+  width: 66%
+  }
 
 .main-card-greyContainer {
   width: 40%;
@@ -198,6 +206,7 @@ header {
   margin: 5%;
   background-color: #FFE89D;
   border: 2px solid #C7D3D8;
+  padding: 2%;
 }
 
 .main-card-title {
@@ -235,7 +244,6 @@ header {
 .main-task-text {
   padding: 2%;
   width: auto;
-
 }
 
 .main-card-buttons {
