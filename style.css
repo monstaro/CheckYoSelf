@@ -175,14 +175,30 @@ header {
 }
 
  /* CARDS */
- .main-card-background {
+
+ /* .main-card-background {
    width: 30%;
    height: 100%;
    background-color: #FAFDFF;
    border: 2px solid #C7D3D8;
-  }
+  } */
+
+.main-card-greyContainer {
+  width: auto;
+  height: auto;
+  margin: 5%;
+  background-color: #FAFDFF;
+  border: 2px solid #C7D3D8;
+}
 
 
+.main-card-yellowContainer {
+  width: auto;
+  height: auto;
+  margin: 5%;
+  background-color: #FFE89D;
+  border: 2px solid #C7D3D8;
+}
 
 .main-card-title {
   padding-top: 2%;
@@ -195,6 +211,9 @@ header {
   padding-bottom: 2%;
 } */
 
+/* .main-card-list {
+  width: auto;
+} */
 
 .main-task-checkbox {
   list-style-type: none;
