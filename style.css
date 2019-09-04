@@ -177,6 +177,7 @@ header {
  /* CARDS */
  .main-card-background {
    width: 30%;
+   height: 100%;
    background-color: #FAFDFF;
    border: 2px solid #C7D3D8;
   }
