@@ -114,3 +114,42 @@ header {
   border-radius: 3%;
   margin: 0 1em 2em 1em;
 }
+
+
+
+ /* CARDS */
+ .main-card-background {
+   width: 30%;
+   background-color: #FAFDFF;
+ }
+
+.main-card-list {
+  width: 30%;
+  height: auto;
+}
+
+.main-card-title {
+  padding-top: 2%;
+  padding-left: 2%;
+}
+
+.bullet-points {
+  list-style-type: none;
+  list-style-image:  src("/images/checkbox_active.svg");
+}
+
+.main-card-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 10%;
+}
+
+
+.card-button-urgent {
+  background-image: url("/images/urgent.svg");
+}
+
+.card-button-delete {
+  background-image:
+url("images/delete/svg")
+}
