@@ -57,6 +57,9 @@ header {
   width: 55%;
 }
 
+.sidebar-and-main {
+  display: flex;
+}
 .sidebar {
   width: 33%;
   background-color: #587a8a;
@@ -140,27 +143,30 @@ header {
 
 .todoCreator-itemInput-textInput {
   border: solid 2px #1f1f3d;
-  width: 75%;
+  width: 70%;
   padding: 5%;
   border-radius: 3%;
-  margin: 0 0 2em 1em;
+  margin: 0 0 3em 1em;
 }
 
 .todoCreator-itemInput-button {
   width: 15%;
+  height: 100%;
   background-color: #1f1f3d;
   color: #ffffff;
   font-size: 4em;
   font-weight: lighter;
   border: .5px solid #1f1f3d;
   border-radius: 3%;
-
-  /* margin-right: 10px;
-  margin-left: 0; */
+  margin-right: .33em;
+  /* margin-left: 0;  */
 
 }
 
-
+.sidebar-buttonsList-section {
+  display: flex;
+  flex-direction: column;
+}
 
  /* CARDS */
  .main-card-background {

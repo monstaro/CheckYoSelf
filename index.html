@@ -1,39 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <title>Check Yo'Self</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap" rel="stylesheet"/>
-    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
-  </head>
-  <body>
-    <header>
-      <h1 class="header-title">Check <span class="yo">Yo'</span> Self</h1>
-      <section class="header-searchbar-buttonAndInput">
-        <button class="header-searchbar-button">
-          <img src="./images/search.svg" class="searchbar-button-image"/>
-        </button>
-        <input type="text" placeholder="Search" class="header-searchbar-input"></input>
-      </section>
-    </header>
+
+<head>
+  <title>Check Yo'Self</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap" rel="stylesheet" />
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+</head>
+
+<body>
+  <header>
+    <h1 class="header-title">Check <span class="yo">Yo'</span> Self</h1>
+    <section class="header-searchbar-buttonAndInput">
+      <button class="header-searchbar-button">
+        <img src="./images/search.svg" class="searchbar-button-image" />
+      </button>
+      <input type="text" placeholder="Search" class="header-searchbar-input"></input>
+    </section>
+  </header>
+  <div class="sidebar-and-main">
     <section class="sidebar">
       <section class="sidebar-toDoCreator-inputsAndList">
         <!-- <section class="sidebar-toDoCreator-taskInput"> -->
-          <label for="task-title" class="todoCreator-taskInput-textInputLabel">Task Title</label>
-          <input type="text" name="task-title" class="todoCreator-taskInput-textInput"></input>
+        <label for="task-title" class="todoCreator-taskInput-textInputLabel">Task Title</label>
+        <input type="text" name="task-title" class="todoCreator-taskInput-textInput"></input>
         <!-- </section> -->
         <section class="sidebar-toDoCreator-taskList">
           <ul class="toDoCreator-taskList-fullList">
             <li class="toDoCreator-taskList-listItem">
               <img src="./images/delete.svg" class="taskList-listItem-delete">
-              <p class="taskList-listItem-text">Placeholder text. More placeholder text.  I need to see how long this can be.</p>
+              <p class="taskList-listItem-text">Placeholder text. More placeholder text. I need to see how long this can be.</p>
             </li>
             <li class="toDoCreator-taskList-listItem">
               <img src="./images/delete.svg" class="taskList-listItem-delete">
-              <p class="taskList-listItem-text">Placeholder text</p></li>
+              <p class="taskList-listItem-text">Placeholder text</p>
+            </li>
             <li class="toDoCreator-taskList-listItem">
               <img src="./images/delete.svg" class="taskList-listItem-delete">
-              <p class="taskList-listItem-text">Placeholder text</p></li>
+              <p class="taskList-listItem-text">Placeholder text</p>
+            </li>
           </ul>
         </section>
         <section class="sidebar-toDoCreator-itemInput">
@@ -44,14 +49,14 @@
           </div>
         </section>
       </section>
-      <section class="sidebar-buttons">
-        <button></button>
-        <button></button>
+      <section class="sidebar-buttonsList-section">
+        <button class="sidebar-buttonsList-button">Make Task List</button>
+        <button class="sidebar-buttonsList-button">Clear All</button>
         <hr>
-        <button></button>
+        <button class="sidebar-buttonsList-button">Filter by Urgency</button>
       </section>
     </section>
-            <!-- CARDS -->
+    <!-- CARDS -->
     <main class="main-card-background">
       <div class="main-card-container">
         <section class="main-card-title">
@@ -82,7 +87,8 @@
         </section>
       </div>
     </main>
+  </div>
 
-  </body>
+</body>
 
-  </html>
+</html>
