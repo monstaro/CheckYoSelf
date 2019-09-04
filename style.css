@@ -24,16 +24,31 @@ header {
 }
 
 .header-searchbar-buttonAndInput {
-  display: inline-block;
+  display: flex;
   width: 31%;
 }
 
 .header-searchbar-button {
-  background: url("./images/search.svg");
   background-size: cover;
   background-position: center;
   background-color: #f3f6f7;
-  border-radius: 5%;
-  padding: 15%;
+  border-radius: 5% 0 0 5%;
+  justify-content: center;
+  padding: 3%;
+  height: 80%;
+  width: 15%;
 }
 
+.header-searchbar-input {
+  height: 72%;
+  width: 72%;
+  border-bottom-right-radius: 5%;
+  border-top-right-radius: 5%;
+  font-size: 1em;
+}
+
+.searchbar-button-image{
+  padding: 0%;
+  align-self: center;
+  width: 55%;
+}
