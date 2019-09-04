@@ -184,7 +184,7 @@ header {
   } */
 
 .main-card-greyContainer {
-  width: auto;
+  width: 30%;
   height: auto;
   margin: 5%;
   background-color: #FAFDFF;
@@ -193,7 +193,7 @@ header {
 
 
 .main-card-yellowContainer {
-  width: auto;
+  width: 30%;
   height: auto;
   margin: 5%;
   background-color: #FFE89D;
