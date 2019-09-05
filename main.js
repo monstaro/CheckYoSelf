@@ -1,6 +1,7 @@
 
 var taskAddButton = document.getElementById('taskAddButton')
 var taskInputField = document.getElementById('taskInputField')
+var taskListParent = document.getElementById('taskListParent');
 
 //may have to make this local var
 var taskText = document.getElementById('taskText')
@@ -11,7 +12,7 @@ function addNewTask () {
   taskListParent.insertAdjacentHTML('beforeend', `<li class="toDoCreator-taskList-listItem">
     <img src="./images/delete.svg" class="taskList-listItem-delete">
     <p class="taskList-listItem-text" id="taskText">${taskInputField.value}</p>
-  </li>`)
+  </li>`);
 }
 
 taskAddButton.addEventListener('click', addNewTask);
@@ -68,5 +69,14 @@ function disableTaskAddButton() {
   }
 }
 
-
 taskInputField.addEventListener('keyup', disableTaskAddButton);
+
+// Funtionality that lets us remove list items from side bar
+
+taskListParent.addEventListener('click', deleteListItem)
+
+function deleteListItem(event){
+  if (event.target.classList.contains('taskList-listItem-delete')){
+    event.target.parentNode.remove();
+  }
+}

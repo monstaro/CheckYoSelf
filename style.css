@@ -35,7 +35,7 @@ header {
 .header-searchbar-button {
   background-size: cover;
   background-position: center;
-  background-color: #f3f6f7;
+  background-color: #C8D3D9;
   border-radius: 5% 0 0 5%;
   justify-content: center;
   padding: 3%;
@@ -46,8 +46,8 @@ header {
 .header-searchbar-input {
   height: inherit;
   width: 72%;
-  border-bottom-right-radius: 5%;
-  border-top-right-radius: 5%;
+  border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
   font-size: 1em;
 }
 
@@ -278,6 +278,6 @@ header {
   font-size: 1.1em;
   width: 91%;
   padding: 5%;
-  border-radius: 2%;
+  border-radius: 3px;
   margin: 0 0 3em 1em;
 }
