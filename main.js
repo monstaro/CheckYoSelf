@@ -12,7 +12,7 @@ var taskListArray = [];
 function addNewTask () {
   var taskListParent = document.getElementById('taskListParent');
   taskListParent.insertAdjacentHTML('beforeend', `<li class="toDoCreator-taskList-listItem">
-    <img src="./images/delete.svg" class="taskList-listItem-delete">
+    <img src="./images/delete.svg" class="taskList-listItem-delete" data-index="${taskListArray.length}">
     <p class="taskList-listItem-text" id="taskText">${taskInputField.value}</p>
   </li>`);
   taskListArray.push(taskInputField.value);
@@ -28,10 +28,11 @@ taskAddButton.addEventListener('click', addNewTask);
 
 
 function addNewCard() {
+  var titleOfTaskList = document.getElementById("titleOfTaskList");
   var parentSectionCards = document.getElementById('parentSectionCards');
   parentSectionCards.insertAdjacentHTML('afterbegin', `<div class="main-card-yellowContainer">
     <section class="main-card-title">
-      <h3></h3>
+      <h3>${titleOfTaskList.value}</h3>
     </section>
       <hr>
     <section class="main-card-list">
@@ -88,7 +89,7 @@ taskListParent.addEventListener('click', deleteListItem)
 
 function deleteListItem(event){
   if (event.target.classList.contains('taskList-listItem-delete')){
+    console.log(event);
     event.target.parentNode.remove();
   }
 }
-

@@ -1,6 +1,7 @@
 class Task {
-  constructor(taskDescription){
+  constructor(taskDescription, index){
     this.taskDescription = taskDescription;
+    this.index = index;
   }
   addArrayToCard(listLocation){
     listLocation.insertAdjacentHTML('beforeend', `<li class="main-task-items">
