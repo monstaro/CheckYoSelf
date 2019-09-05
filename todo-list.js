@@ -1,9 +1,9 @@
 class TodoList {
-  constructor(id, title,) {
+  constructor(id, title, array) {
     this.id = id;
     this.title = title;
     this.urgent = false;
-    this.tasks = []
+    this.tasks = array;
   }
   saveToStorage() {
 
@@ -15,6 +15,6 @@ class TodoList {
 
   }
   updateTask() {
-    
+
   }
 }

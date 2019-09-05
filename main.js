@@ -57,10 +57,14 @@ function addNewCard() {
     </div>`);
   var taskListParent = document.getElementById('cardTasklistParent');
   console.log(taskListArray[0].innerText);
+  var allTasksArray = [];
   for (var i = 0; i < taskListArray.length; i++) {
     var taskListObject = new Task(taskListArray[i].innerText, Date.now());
     addArrayToCard(taskListParent, taskListArray[i].innerText);
+    allTasksArray.push(taskListObject);
   }
+  var todoList = new TodoList(Date.now(), taskTitleField.value, allTasksArray);
+  console.log(todoList);
 }
 
 function addArrayToCard(listLocation, taskDescription){
