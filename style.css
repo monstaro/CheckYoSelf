@@ -181,6 +181,10 @@ header {
   flex-direction: column;
 }
 
+.sidebar-buttonsList-button:disabled {
+  background-color: #60606a;
+}
+
  /* CARDS */
 
 .main-card-background {

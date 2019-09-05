@@ -82,7 +82,7 @@ taskTitleField.addEventListener('keyup', disableTaskAddButton);
 //
 //   }
 // }
-// Funtionality that lets us remove list items from side bar
+// Funtionality that lets us remove list items from side bar -VEE
 
 taskListParent.addEventListener('click', deleteListItem)
 
@@ -111,4 +111,15 @@ function clearAll(event){
   }else {
     clearAllButton.disabled = true;
   }
-  }
+}
+
+// -VEE disable button function
+
+var sideBarInputSection = document.querySelector('.sidebar-toDoCreator-inputsAndList')
+
+sideBarInputSection.addEventListener('click', disableAddTaskListButton)
+
+function disableAddTaskListButton(){
+  (taskInputField.value == "") || (taskTitleBox.value == "") ?
+  (makeToDoCard.disabled) = true : (makeToDoCard.disabled = false)
+}
