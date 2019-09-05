@@ -4,10 +4,12 @@ var taskAddButton = document.getElementById('taskAddButton');
 var taskInputField = document.getElementById('taskInputField');
 var taskListParent = document.getElementById('taskListParent');
 
-//may have to make this local var
-var taskText = document.getElementById('taskText')
 
-var taskListArray = [];
+// var taskText = document.getElementById('taskText')
+//
+// var taskListArray = [];
+
+
 
 function addNewTask () {
   var taskListParent = document.getElementById('taskListParent');
@@ -15,8 +17,8 @@ function addNewTask () {
     <img src="./images/delete.svg" class="taskList-listItem-delete">
     <p class="taskList-listItem-text" id="taskText">${taskInputField.value}</p>
   </li>`);
-  taskListArray.push(taskInputField.value);
-  console.log(taskListArray);
+  // taskListArray.push(taskInputField.value);
+  // console.log(taskListArray);
 }
 
 taskAddButton.addEventListener('click', addNewTask);
@@ -26,8 +28,10 @@ taskAddButton.addEventListener('click', addNewTask);
 //doc query for parent section of main-card-bacgrkound
 //insert innerHTML
 
+// var taskListArray = document.querySelectorAll("#taskText");
 
 function addNewCard() {
+  var taskListArray = document.querySelectorAll("#taskText");
   var parentSectionCards = document.getElementById('parentSectionCards');
   parentSectionCards.insertAdjacentHTML('afterbegin', `<div class="main-card-yellowContainer">
     <section class="main-card-title">
@@ -52,12 +56,27 @@ function addNewCard() {
     </section>
     </div>`);
   var taskListParent = document.getElementById('cardTasklistParent');
+  console.log(taskListArray[0].innerText);
   for (var i = 0; i < taskListArray.length; i++) {
-    var taskListObject = new Task(taskListArray[i]);
-    taskListObject.addArrayToCard(taskListParent);
+    var taskListObject = new Task(taskListArray[i].innerText, Date.now());
+    addArrayToCard(taskListParent, taskListArray[i].innerText);
   }
 }
 
+function addArrayToCard(listLocation, taskDescription){
+  listLocation.insertAdjacentHTML('beforeend', `<li class="main-task-items">
+    <img src="./images/checkbox-active.svg" class="main-task-icons">
+    <p class="main-task-text">${taskDescription}</p>
+  </li>`)
+}
+
+var sidebarAllItems = document.getElementById('sidebarAllItems');
+
+sidebarAllItems.addEventListener("click", checkEvent);
+
+function checkEvent(event) {
+  console.log(event);
+}
 
 var makeToDoCard = document.getElementById('makeToDoCard');
 
