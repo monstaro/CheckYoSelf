@@ -1,7 +1,7 @@
 //Make new task and add to the array
 
-var taskAddButton = document.getElementById('taskAddButton')
-var taskInputField = document.getElementById('taskInputField')
+var taskAddButton = document.getElementById('taskAddButton');
+var taskInputField = document.getElementById('taskInputField');
 var taskListParent = document.getElementById('taskListParent');
 
 //may have to make this local var
@@ -93,3 +93,24 @@ function deleteListItem(event){
     event.target.parentNode.remove();
   }
 }
+
+// COdy
+
+// var clearAllButton = document.getElementById('clearAllButton');
+// var taskTitleBox = document.getElementById('taskInputField');
+var clearAllButton = document.getElementById('clearAllButton');
+var taskTitleBox = document.getElementById('titleOfTaskList');
+var taskListParent = document.getElementById('taskListParent');
+
+clearAllButton.addEventListener('click', clearAll);
+
+function clearAll(event){
+  taskTitleBox.value = "";
+  taskListParent.innerText = "";
+  if (taskTitleBox.value !== '') {
+  clearAllButton.disabled = false;
+  } else {
+    clearAllButton.disabled = true;
+  }
+  }
+
