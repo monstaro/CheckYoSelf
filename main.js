@@ -31,7 +31,7 @@ function addNewCard() {
   var parentSectionCards = document.getElementById('parentSectionCards');
   parentSectionCards.insertAdjacentHTML('afterbegin', `<div class="main-card-yellowContainer">
     <section class="main-card-title">
-      <h3></h3>
+      <h3>${taskTitleField.value}</h3>
     </section>
       <hr>
     <section class="main-card-list">
@@ -65,14 +65,14 @@ makeToDoCard.addEventListener('click', addNewCard);
 
 
 function disableTaskAddButton() {
-  if (taskInputField.value !== ""){
+  if (taskTitleField.value !== ""){
     taskAddButton.disabled = false;
   }else{
     taskAddButton.disabled = true;
   }
 }
 
-taskInputField.addEventListener('keyup', disableTaskAddButton);
+taskTitleField.addEventListener('keyup', disableTaskAddButton);
 
 //Instantiate array and add to card
 
@@ -98,7 +98,7 @@ function deleteListItem(event){
 // var clearAllButton = document.getElementById('clearAllButton');
 // var taskTitleBox = document.getElementById('taskInputField');
 var clearAllButton = document.getElementById('clearAllButton');
-var taskTitleBox = document.getElementById('taskInputField');
+var taskTitleBox = document.getElementById('taskTitleField');
 var taskListParent = document.getElementById('taskListParent');
 
 clearAllButton.addEventListener('click', clearAll);
