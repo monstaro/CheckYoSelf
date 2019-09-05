@@ -2,6 +2,7 @@
 
 var taskAddButton = document.getElementById('taskAddButton')
 var taskInputField = document.getElementById('taskInputField')
+var taskListParent = document.getElementById('taskListParent');
 
 //may have to make this local var
 var taskText = document.getElementById('taskText')
@@ -71,7 +72,6 @@ function disableTaskAddButton() {
   }
 }
 
-
 taskInputField.addEventListener('keyup', disableTaskAddButton);
 
 //Instantiate array and add to card
@@ -82,3 +82,13 @@ taskInputField.addEventListener('keyup', disableTaskAddButton);
 //
 //   }
 // }
+// Funtionality that lets us remove list items from side bar
+
+taskListParent.addEventListener('click', deleteListItem)
+
+function deleteListItem(event){
+  if (event.target.classList.contains('taskList-listItem-delete')){
+    event.target.parentNode.remove();
+  }
+}
+
