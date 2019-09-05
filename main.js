@@ -90,6 +90,15 @@ function clearAll(event){
   taskListParent.innerText = "";
 }
 
+taskTitleBox.addEventListener('keyup', disableClearAllButton)
+
+function disableClearAllButton () {
+  if (taskTitleBox.value !== ""){
+    clearAllButton.disabled = false;
+  }else{
+    taskAddButton.disabled = false;
+  }
+}
 
 var makeToDoCard = document.getElementById('makeToDoCard');
 
