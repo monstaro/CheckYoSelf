@@ -3,11 +3,12 @@
 var taskAddButton = document.getElementById('taskAddButton');
 var taskInputField = document.getElementById('taskInputField');
 var taskListParent = document.getElementById('taskListParent');
-
-//may have to make this local var
 var taskText = document.getElementById('taskText')
-
 var taskListArray = [];
+var clearAllButton = document.getElementById('clearAllButton');
+var taskTitleBox = document.getElementById('taskTitleField');
+var taskListParent = document.getElementById('taskListParent');
+
 
 function addNewTask () {
   var taskListParent = document.getElementById('taskListParent');
@@ -21,10 +22,6 @@ function addNewTask () {
 
 taskAddButton.addEventListener('click', addNewTask);
 
-
-//ADD NEW CARDS
-//doc query for parent section of main-card-bacgrkound
-//insert innerHTML
 
 
 function addNewCard() {
@@ -74,6 +71,28 @@ function disableTaskAddButton() {
 
 taskTitleField.addEventListener('keyup', disableTaskAddButton);
 
+
+function disableClearAllButton() {
+  if (taskTitleBox.value !== ""){
+    clearAllButton.disabled = false;
+  }else{
+    clearAllButton.disabled = true;
+  }
+}
+
+taskTitleBox.addEventListener('keypress', disableClearAllButton)
+
+clearAllButton.addEventListener('click', clearAll);
+
+function clearAll(event){
+  taskTitleBox.value = "";
+  taskListParent.innerText = "";
+  if (taskTitleBox.value !== '') {
+  clearAllButton.disabled = false;
+  }else {
+    clearAllButton.disabled = true;
+  }
+  }
 //Instantiate array and add to card
 
 // function instantiateTaskList() {
@@ -91,24 +110,3 @@ function deleteListItem(event){
     event.target.parentNode.remove();
   }
 }
-
-
-// COdy
-
-// var clearAllButton = document.getElementById('clearAllButton');
-// var taskTitleBox = document.getElementById('taskInputField');
-var clearAllButton = document.getElementById('clearAllButton');
-var taskTitleBox = document.getElementById('taskTitleField');
-var taskListParent = document.getElementById('taskListParent');
-
-clearAllButton.addEventListener('click', clearAll);
-
-function clearAll(event){
-  taskTitleBox.value = "";
-  taskListParent.innerText = "";
-  if (taskTitleBox.value !== '') {
-  clearAllButton.disabled = false;
-  }else {
-    clearAllButton.disabled = true;
-  }
-  }
