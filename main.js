@@ -1,3 +1,4 @@
+//Make new task and add to the array
 
 var taskAddButton = document.getElementById('taskAddButton')
 var taskInputField = document.getElementById('taskInputField')
@@ -6,6 +7,7 @@ var taskListParent = document.getElementById('taskListParent');
 //may have to make this local var
 var taskText = document.getElementById('taskText')
 
+var taskListArray = [];
 
 function addNewTask () {
   var taskListParent = document.getElementById('taskListParent');
@@ -13,17 +15,11 @@ function addNewTask () {
     <img src="./images/delete.svg" class="taskList-listItem-delete">
     <p class="taskList-listItem-text" id="taskText">${taskInputField.value}</p>
   </li>`);
+  taskListArray.push(taskInputField.value);
+  console.log(taskListArray);
 }
 
 taskAddButton.addEventListener('click', addNewTask);
-// Add innerHTML function to add whole list item to
-// proper spot in parent which is the UL
-
-
-// Interpolate the value of the text input field
-// into the <p> element on the HTML we are adding
-
-
 
 
 //ADD NEW CARDS
@@ -39,7 +35,7 @@ function addNewCard() {
     </section>
       <hr>
     <section class="main-card-list">
-      <ul class="main-task-checkbox">
+      <ul class="main-task-checkbox" id="cardTasklistParent">
 
       </ul>
     </section>
@@ -55,7 +51,14 @@ function addNewCard() {
       </button>
     </section>
     </div>`);
+  var taskListParent = document.getElementById('cardTasklistParent');
+  for (var i = 0; i < taskListArray.length; i++) {
+    var taskListObject = new Task(taskListArray[i]);
+    taskListObject.addArrayToCard(taskListParent);
+  }
 }
+
+
 var makeToDoCard = document.getElementById('makeToDoCard');
 
 makeToDoCard.addEventListener('click', addNewCard);
@@ -71,6 +74,14 @@ function disableTaskAddButton() {
 
 taskInputField.addEventListener('keyup', disableTaskAddButton);
 
+//Instantiate array and add to card
+
+// function instantiateTaskList() {
+//   for (var i = 0; i < taskListArray.length; i++) {
+//     var taskListObject = new Task(taskListArray[i]);
+//
+//   }
+// }
 // Funtionality that lets us remove list items from side bar
 
 taskListParent.addEventListener('click', deleteListItem)
@@ -80,3 +91,4 @@ function deleteListItem(event){
     event.target.parentNode.remove();
   }
 }
+
