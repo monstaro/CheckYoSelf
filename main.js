@@ -129,6 +129,7 @@ clearAllButton.addEventListener('click', clearAll);
 function clearAll(event){
   taskTitleBox.value = "";
   taskListParent.innerText = "";
+  // var taskListArray = [];
   if (taskTitleBox.value !== '') {
   clearAllButton.disabled = false;
   }else {
