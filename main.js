@@ -57,14 +57,10 @@ function addNewCard() {
     </div>`);
   var taskListParent = document.getElementById('cardTasklistParent');
   console.log(taskListArray[0].innerText);
-  var allTasksArray = [];
   for (var i = 0; i < taskListArray.length; i++) {
     var taskListObject = new Task(taskListArray[i].innerText, Date.now());
     addArrayToCard(taskListParent, taskListArray[i].innerText);
-    allTasksArray.push(taskListObject);
   }
-  var todoList = new TodoList(Date.now(), taskTitleField.value, allTasksArray);
-  console.log(todoList);
 }
 
 function addArrayToCard(listLocation, taskDescription){
@@ -81,6 +77,19 @@ sidebarAllItems.addEventListener("click", checkEvent);
 function checkEvent(event) {
   console.log(event);
 }
+
+//* CLEAR ALL BUTTON *//
+var clearAllButton = document.getElementById('clearAllButton');
+var taskTitleBox = document.getElementById('taskTitleField');
+var taskListParent = document.getElementById('taskListParent');
+
+clearAllButton.addEventListener('click', clearAll);
+
+function clearAll(event){
+  taskTitleBox.value = "";
+  taskListParent.innerText = "";
+}
+
 
 var makeToDoCard = document.getElementById('makeToDoCard');
 
@@ -116,26 +125,6 @@ function deleteListItem(event){
 }
 
 
-// COdy
-
-// var clearAllButton = document.getElementById('clearAllButton');
-// var taskTitleBox = document.getElementById('taskInputField');
-var clearAllButton = document.getElementById('clearAllButton');
-var taskTitleBox = document.getElementById('taskTitleField');
-var taskListParent = document.getElementById('taskListParent');
-
-clearAllButton.addEventListener('click', clearAll);
-
-function clearAll(event){
-  taskTitleBox.value = "";
-  taskListParent.innerText = "";
-  // var taskListArray = [];
-  if (taskTitleBox.value !== '') {
-  clearAllButton.disabled = false;
-  }else {
-    clearAllButton.disabled = true;
-  }
-}
 
 // -VEE disable button function
 
