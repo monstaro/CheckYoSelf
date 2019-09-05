@@ -23,7 +23,7 @@
       <section class="sidebar-toDoCreator-inputsAndList">
         <!-- <section class="sidebar-toDoCreator-taskInput"> -->
         <label for="task-title" class="todoCreator-taskInput-textInputLabel">Task Title</label>
-        <input type="text" name="task-title" class="todoCreator-taskInput-textInput" id="taskInputField"></input>
+        <input type="text" name="task-title" class="todoCreator-taskInput-textInput" id="taskTitleField"></input>
         <!-- </section> -->
         <section class="sidebar-toDoCreator-taskList">
           <ul class="toDoCreator-taskList-fullList" id="taskListParent">
@@ -44,7 +44,7 @@
         <section class="sidebar-toDoCreator-itemInput">
           <label for="task-item" class="todoCreator-taskInput-itemInputLabel">Task Item</label>
           <div class="itemInput-container-textAndButton">
-            <input type="text" name="task-item" class="todoCreator-itemInput-textInput" onkeyup="disableTaskAddButton()"></input>
+            <input type="text" name="task-item" class="todoCreator-itemInput-textInput" id="taskInputField" onkeyup="disableTaskAddButton()"></input>
             <button disabled class="todoCreator-itemInput-button" id="taskAddButton">+</button>
           </div>
         </section>
