@@ -5,30 +5,18 @@ var taskInputField = document.getElementById('taskInputField');
 var taskListParent = document.getElementById('taskListParent');
 
 
-// var taskText = document.getElementById('taskText')
-//
-// var taskListArray = [];
-
-
-
-function addNewTask () {
+function addNewTask() {
   var taskListParent = document.getElementById('taskListParent');
   taskListParent.insertAdjacentHTML('beforeend', `<li class="toDoCreator-taskList-listItem">
     <img src="./images/delete.svg" class="taskList-listItem-delete">
     <p class="taskList-listItem-text" id="taskText">${taskInputField.value}</p>
   </li>`);
-  // taskListArray.push(taskInputField.value);
-  // console.log(taskListArray);
 }
 
 taskAddButton.addEventListener('click', addNewTask);
 
-
 //ADD NEW CARDS
-//doc query for parent section of main-card-bacgrkound
-//insert innerHTML
-
-// var taskListArray = document.querySelectorAll("#taskText");
+//Instantiate to Todolist
 
 function addNewCard() {
   var taskListArray = document.querySelectorAll("#taskText");
@@ -40,7 +28,6 @@ function addNewCard() {
       <hr>
     <section class="main-card-list">
       <ul class="main-task-checkbox" id="cardTasklistParent">
-
       </ul>
     </section>
     <hr>
@@ -63,7 +50,7 @@ function addNewCard() {
   }
 }
 
-function addArrayToCard(listLocation, taskDescription){
+function addArrayToCard(listLocation, taskDescription) {
   listLocation.insertAdjacentHTML('beforeend', `<li class="main-task-items">
     <img src="./images/checkbox-active.svg" class="main-task-icons">
     <p class="main-task-text">${taskDescription}</p>
@@ -72,11 +59,11 @@ function addArrayToCard(listLocation, taskDescription){
 
 var sidebarAllItems = document.getElementById('sidebarAllItems');
 
-sidebarAllItems.addEventListener("click", checkEvent);
-
-function checkEvent(event) {
-  console.log(event);
-}
+// sidebarAllItems.addEventListener("click", checkEvent);
+//
+// function checkEvent(event) {
+//   console.log(event);
+// }
 
 //* CLEAR ALL BUTTON *//
 var clearAllButton = document.getElementById('clearAllButton');
@@ -85,18 +72,18 @@ var taskListParent = document.getElementById('taskListParent');
 
 clearAllButton.addEventListener('click', clearAll);
 
-function clearAll(event){
+function clearAll(event) {
   taskTitleBox.value = "";
   taskListParent.innerText = "";
 }
 
 taskTitleBox.addEventListener('keyup', disableClearAllButton)
 
-function disableClearAllButton () {
-  if (taskTitleBox.value !== ""){
+function disableClearAllButton() {
+  if (taskTitleBox.value !== "") {
     clearAllButton.disabled = false;
-  }else{
-    taskAddButton.disabled = false;
+  } else {
+    clearAllButton.disabled = true;
   }
 }
 
@@ -104,44 +91,35 @@ var makeToDoCard = document.getElementById('makeToDoCard');
 
 makeToDoCard.addEventListener('click', addNewCard);
 
+// Disable Task Add Button
 
 function disableTaskAddButton() {
-  if (taskTitleField.value !== ""){
+  if (taskTitleField.value !== "") {
     taskAddButton.disabled = false;
-  }else{
+  } else {
     taskAddButton.disabled = true;
   }
 }
 
 taskTitleField.addEventListener('keyup', disableTaskAddButton);
 
-//Instantiate array and add to card
-
-// function instantiateTaskList() {
-//   for (var i = 0; i < taskListArray.length; i++) {
-//     var taskListObject = new Task(taskListArray[i]);
-//
-//   }
-// }
-// Funtionality that lets us remove list items from side bar -VEE
-
 taskListParent.addEventListener('click', deleteListItem)
 
-function deleteListItem(event){
-  if (event.target.classList.contains('taskList-listItem-delete')){
+// Delete list item
+
+function deleteListItem(event) {
+  if (event.target.classList.contains('taskList-listItem-delete')) {
     event.target.parentNode.remove();
   }
 }
 
-
-
-// -VEE disable button function
+// Disable task list button
 
 var sideBarInputSection = document.querySelector('.sidebar-toDoCreator-inputsAndList')
 
 sideBarInputSection.addEventListener('click', disableAddTaskListButton)
 
-function disableAddTaskListButton(){
+function disableAddTaskListButton() {
   (taskInputField.value == "") || (taskTitleBox.value == "") ?
-  (makeToDoCard.disabled) = true : (makeToDoCard.disabled = false)
+  (makeToDoCard.disabled) = true: (makeToDoCard.disabled = false)
 }

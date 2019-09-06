@@ -51,7 +51,7 @@ header {
   font-size: 1em;
 }
 
-.searchbar-button-image{
+.searchbar-button-image {
   padding: 0%;
   align-self: center;
   width: 55%;
@@ -61,6 +61,7 @@ header {
   display: flex;
   height: 1000px;
 }
+
 .sidebar {
   width: 33%;
   background-color: #587a8a;
@@ -75,14 +76,6 @@ header {
   flex-direction: column;
   text-align: center;
 }
-
-
-/* .sidebar-toDoCreator-taskInput {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  text-align: center;
-} */
 
 .todoCreator-taskInput-textInputLabel {
   color: #f3f6f7;
@@ -105,17 +98,17 @@ header {
   height: 200px;
   overflow: scroll;
 }
-/* Revisit above */
-
 
 .toDoCreator-taskList-fullList {
   display: inline;
 }
+
 .toDoCreator-taskList-listItem {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
 }
+
 .taskList-listItem-delete {
   width: 7%;
   margin: 0 .75em 1em 2em;
@@ -128,15 +121,15 @@ header {
   text-align: left;
   color: #ffffff;
   font-size: 1.25em;
-
 }
+
 .sidebar-toDoCreator-itemInput {
   width: 100%;
   display: flex;
   flex-direction: column;
   text-align: center;
-
 }
+
 .todoCreator-taskInput-itemInputLabel {
   color: #f3f6f7;
   font-size: 1em;
@@ -174,8 +167,6 @@ header {
   border-bottom-right-radius: 3%;
   margin-right: .33em;
   padding: 0;
-  /* margin-left: 0;  */
-
 }
 
 .sidebar-buttonsList-section {
@@ -186,8 +177,6 @@ header {
 .sidebar-buttonsList-button:disabled {
   background-color: #60606a;
 }
-
- /* CARDS */
 
 .main-card-background {
   display: flex;
@@ -205,7 +194,6 @@ header {
   border: 2px solid #C7D3D8;
 }
 
-
 .main-card-yellowContainer {
   width: 40%;
   height: auto;
@@ -220,15 +208,6 @@ header {
   padding-left: 2%;
   padding-bottom: 2%;
 }
-
-
-/* .card-task-title {
-  padding-bottom: 2%;
-} */
-
-/* .main-card-list {
-  width: auto;
-} */
 
 .main-task-checkbox {
   list-style-type: none;
@@ -258,7 +237,6 @@ header {
   padding: 3%;
   height: auto;
 }
-
 
 .card-button-urgent {
   width: 15%;
