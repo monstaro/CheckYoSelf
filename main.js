@@ -17,7 +17,6 @@ taskAddButton.addEventListener('click', addNewTask);
 
 //ADD NEW CARDS
 //Instantiate to Todolist
-
 function addNewCard() {
   var taskListArray = document.querySelectorAll("#taskText");
   var parentSectionCards = document.getElementById('parentSectionCards');
@@ -28,6 +27,7 @@ function addNewCard() {
       <hr>
     <section class="main-card-list">
       <ul class="main-task-checkbox" id="cardTasklistParent">
+
       </ul>
     </section>
     <hr>
@@ -44,10 +44,14 @@ function addNewCard() {
     </div>`);
   var taskListParent = document.getElementById('cardTasklistParent');
   console.log(taskListArray[0].innerText);
+  var allTasksArray = [];
   for (var i = 0; i < taskListArray.length; i++) {
     var taskListObject = new Task(taskListArray[i].innerText, Date.now());
     addArrayToCard(taskListParent, taskListArray[i].innerText);
+    allTasksArray.push(taskListObject);
   }
+  var todoList = new TodoList(Date.now(), taskTitleField.value, allTasksArray);
+  console.log(todoList);
 }
 
 function addArrayToCard(listLocation, taskDescription) {
