@@ -3,6 +3,25 @@
 var taskAddButton = document.getElementById('taskAddButton');
 var taskInputField = document.getElementById('taskInputField');
 var taskListParent = document.getElementById('taskListParent');
+var clearAllButton = document.getElementById('clearAllButton');
+var taskTitleBox = document.getElementById('taskTitleField');
+var taskListParent = document.getElementById('taskListParent');
+// var sidebarAllItems = document.getElementById('sidebarAllItems');
+var makeToDoCard = document.getElementById('makeToDoCard');
+var sideBarInputSection = document.querySelector('.sidebar-toDoCreator-inputsAndList')
+
+taskAddButton.addEventListener('click', addNewTask);
+// taskAddButton.addEventListener('click', addNewTask);
+// clearAllButton.addEventListener('click', clearAll);
+// work on this later!!!!!! <------
+  sideBarInputSection.addEventListener('click', disableClearAllButton); 
+clearAllButton.addEventListener('click', clearAll);
+  taskTitleBox.addEventListener('keyup', disableClearAllButton);
+makeToDoCard.addEventListener('click', addNewCard);
+taskTitleField.addEventListener('keyup', disableTaskAddButton);
+taskAddButton.addEventListener("click", disableTaskAddButton);
+taskListParent.addEventListener('click', deleteListItem);
+sideBarInputSection.addEventListener('click', disableAddTaskListButton);
 
 
 function addNewTask() {
@@ -14,11 +33,6 @@ function addNewTask() {
   taskInputField.value = "";
 }
 
-taskAddButton.addEventListener('click', addNewTask);
-
-//ADD NEW CARDS
-//Instantiate to Todolist
-
 function addNewCard() {
   var taskListArray = document.querySelectorAll("#taskText");
   var parentSectionCards = document.getElementById('parentSectionCards');
@@ -29,9 +43,19 @@ function addNewCard() {
   for (var i = 0; i < taskListArray.length; i++) {
     var taskListObject = new Task(taskListArray[i].innerText, Date.now());
     console.log("task list", taskListObject);
-    addArrayToCard(taskListParent, taskListArray[i].innerText);
-    return taskListObject;
+    addArrayToCard(taskListParent, taskListArray[i].innerText); 
   }
+}
+
+function taskHtmlToEmbed(toDo) {
+  var fullStringArray = [];
+  for (var i = 0; i < toDo.tasks.length; i++){
+    fullStringArray.push(`<li class="main-task-items">
+    <img src="./images/checkbox-active.svg" class="main-task-icons">
+    <p class="main-task-text">${toDo.tasks[i].taskDescription}</p>
+  </li>`)
+  }
+  return fullStringArray.join("");
 }
 
 function addArrayToCard(listLocation, taskDescription) {
@@ -41,55 +65,26 @@ function addArrayToCard(listLocation, taskDescription) {
   </li>`)
 }
 
-var sidebarAllItems = document.getElementById('sidebarAllItems');
-
-// sidebarAllItems.addEventListener("click", checkEvent);
-//
-// function checkEvent(event) {
-//   console.log(event);
-// }
-
-//* CLEAR ALL BUTTON *//
-var clearAllButton = document.getElementById('clearAllButton');
-var taskTitleBox = document.getElementById('taskTitleField');
-var taskListParent = document.getElementById('taskListParent');
-
-clearAllButton.addEventListener('click', clearAll);
-
-function clearAll(event) {
+function clearAll() {
   taskTitleBox.value = "";
   taskListParent.innerText = "";
 }
 
-taskTitleBox.addEventListener('keyup', disableClearAllButton)
-
 function disableClearAllButton() {
-  if (taskTitleBox.value !== "" || taskListParent.innerText == "") {
-    clearAllButton.disabled = false;
-  } else {
+  if (taskTitleBox.value === "" && taskListParent.value === "") {
     clearAllButton.disabled = true;
+  } else {
+    clearAllButton.disabled = false;
   }
 }
-
-var makeToDoCard = document.getElementById('makeToDoCard');
-
-makeToDoCard.addEventListener('click', addNewCard);
-
-// Disable Task Add Button
 
 function disableTaskAddButton() {
-  if (taskTitleField.value !== "") {
-    taskAddButton.disabled = false;
-  } else {
+  if (taskTitleField.value === "" || taskInputField.value === "") {
     taskAddButton.disabled = true;
+  } else {
+    taskAddButton.disabled = false;
   }
 }
-
-taskTitleField.addEventListener('keyup', disableTaskAddButton);
-
-taskListParent.addEventListener('click', deleteListItem)
-
-// Delete list item
 
 function deleteListItem(event) {
   if (event.target.classList.contains('taskList-listItem-delete')) {
@@ -97,17 +92,10 @@ function deleteListItem(event) {
   }
 }
 
-// Disable task list button
-
-var sideBarInputSection = document.querySelector('.sidebar-toDoCreator-inputsAndList')
-
-sideBarInputSection.addEventListener('click', disableAddTaskListButton)
-
 function disableAddTaskListButton() {
-  (taskListParent.innerText == "")  || (taskTitleBox.value == "") ?
-  (makeToDoCard.disabled) = true: (makeToDoCard.disabled = false)
+  (taskListParent.innerText === "") || (taskTitleBox.value === "") ?
+  (makeToDoCard.disabled = true) : (makeToDoCard.disabled = false)
 }
-
 
 function htmlToEmbed(toDo) {
   return `<div class="main-card-yellowContainer">
