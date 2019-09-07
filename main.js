@@ -14,7 +14,7 @@ taskAddButton.addEventListener('click', addNewTask);
 // taskAddButton.addEventListener('click', addNewTask);
 // clearAllButton.addEventListener('click', clearAll);
 // work on this later!!!!!! <------
-  sideBarInputSection.addEventListener('click', disableClearAllButton); 
+sideBarInputSection.addEventListener('click', disableClearAllButton); 
 clearAllButton.addEventListener('click', clearAll);
   taskTitleBox.addEventListener('keyup', disableClearAllButton);
 makeToDoCard.addEventListener('click', addNewCard);
@@ -36,33 +36,18 @@ function addNewTask() {
 function addNewCard() {
   var taskListArray = document.querySelectorAll("#taskText");
   var parentSectionCards = document.getElementById('parentSectionCards');
-  var listTitle = document.querySelector('#taskTitleField').value
-  var toDoObj = new TodoList(Date.now(),listTitle, taskListArray);
-  parentSectionCards.insertAdjacentHTML('afterbegin', htmlToEmbed(toDoObj));
-  var taskListParent = document.getElementById('cardTasklistParent');
+  var listTitle = document.querySelector('#taskTitleField').value;
+  var allTasksArray = [];
   for (var i = 0; i < taskListArray.length; i++) {
     var taskListObject = new Task(taskListArray[i].innerText, Date.now());
+    allTasksArray.push(taskListObject);
+    console.log(allTasksArray);
     console.log("task list", taskListObject);
-    addArrayToCard(taskListParent, taskListArray[i].innerText); 
   }
-}
-
-function taskHtmlToEmbed(toDo) {
-  var fullStringArray = [];
-  for (var i = 0; i < toDo.tasks.length; i++){
-    fullStringArray.push(`<li class="main-task-items">
-    <img src="./images/checkbox-active.svg" class="main-task-icons">
-    <p class="main-task-text">${toDo.tasks[i].taskDescription}</p>
-  </li>`)
-  }
-  return fullStringArray.join("");
-}
-
-function addArrayToCard(listLocation, taskDescription) {
-  listLocation.insertAdjacentHTML('beforeend', `<li class="main-task-items">
-    <img src="./images/checkbox-active.svg" class="main-task-icons">
-    <p class="main-task-text">${taskDescription}</p>
-  </li>`)
+  var toDoObj = new TodoList(Date.now(),listTitle, allTasksArray);
+  parentSectionCards.insertAdjacentHTML('afterbegin', htmlToEmbed(toDoObj));
+  var taskListParent = document.getElementById('cardTasklistParent');
+  taskListParent.insertAdjacentHTML('beforeend', taskHtmlToEmbed(toDoObj));
 }
 
 function clearAll() {
@@ -95,6 +80,17 @@ function deleteListItem(event) {
 function disableAddTaskListButton() {
   (taskListParent.innerText === "") || (taskTitleBox.value === "") ?
   (makeToDoCard.disabled = true) : (makeToDoCard.disabled = false)
+}
+
+function taskHtmlToEmbed(toDo) {
+  var fullStringArray = [];
+  for (var i = 0; i < toDo.tasks.length; i++) {
+    fullStringArray.push(`<li class="main-task-items">
+    <img src="./images/checkbox-active.svg" class="main-task-icons">
+    <p class="main-task-text">${toDo.tasks[i].taskDescription}</p>
+  </li>`)
+  }
+  return fullStringArray.join("");
 }
 
 function htmlToEmbed(toDo) {
