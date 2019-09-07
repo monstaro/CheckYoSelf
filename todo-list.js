@@ -15,6 +15,6 @@ class TodoList {
 
   }
   updateTask() {
-
+    this.tasks[].checkedOff = true;
   }
 }

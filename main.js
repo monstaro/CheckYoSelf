@@ -82,11 +82,13 @@ function disableAddTaskListButton() {
   (makeToDoCard.disabled = true) : (makeToDoCard.disabled = false)
 }
 
+
+
 function taskHtmlToEmbed(toDo) {
   var fullStringArray = [];
   for (var i = 0; i < toDo.tasks.length; i++) {
     fullStringArray.push(`<li class="main-task-items">
-    <img src="./images/checkbox-active.svg" class="main-task-icons">
+    <img src="./images/checkbox.svg" class="main-task-icons">
     <p class="main-task-text">${toDo.tasks[i].taskDescription}</p>
   </li>`)
   }
@@ -94,7 +96,7 @@ function taskHtmlToEmbed(toDo) {
 }
 
 function htmlToEmbed(toDo) {
-  return `<div class="main-card-yellowContainer">
+  return `<div class="main-card-greyContainer">
     <section class="main-card-title">
       <h3>${toDo.title}</h3>
     </section>
