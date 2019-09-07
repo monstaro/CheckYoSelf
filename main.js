@@ -11,6 +11,7 @@ function addNewTask() {
     <img src="./images/delete.svg" class="taskList-listItem-delete">
     <p class="taskList-listItem-text" id="taskText">${taskInputField.value}</p>
   </li>`);
+  taskInputField.value = "";
 }
 
 taskAddButton.addEventListener('click', addNewTask);
@@ -63,7 +64,7 @@ function clearAll(event) {
 taskTitleBox.addEventListener('keyup', disableClearAllButton)
 
 function disableClearAllButton() {
-  if (taskTitleBox.value !== "") {
+  if (taskTitleBox.value !== "" || taskListParent.innerText == "") {
     clearAllButton.disabled = false;
   } else {
     clearAllButton.disabled = true;
@@ -103,7 +104,7 @@ var sideBarInputSection = document.querySelector('.sidebar-toDoCreator-inputsAnd
 sideBarInputSection.addEventListener('click', disableAddTaskListButton)
 
 function disableAddTaskListButton() {
-  (taskInputField.value == "") || (taskTitleBox.value == "") ?
+  (taskListParent.innerText == "")  || (taskTitleBox.value == "") ?
   (makeToDoCard.disabled) = true: (makeToDoCard.disabled = false)
 }
 
