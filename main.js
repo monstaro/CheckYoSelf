@@ -21,32 +21,15 @@ taskAddButton.addEventListener('click', addNewTask);
 function addNewCard() {
   var taskListArray = document.querySelectorAll("#taskText");
   var parentSectionCards = document.getElementById('parentSectionCards');
-  parentSectionCards.insertAdjacentHTML('afterbegin', `<div class="main-card-yellowContainer">
-    <section class="main-card-title">
-      <h3>${taskTitleField.value}</h3>
-    </section>
-      <hr>
-    <section class="main-card-list">
-      <ul class="main-task-checkbox" id="cardTasklistParent">
-      </ul>
-    </section>
-    <hr>
-    <section class="main-card-buttons">
-      <button class="card-button-urgent">
-        <img src="./images/urgent.svg" class="card-button-image" />
-        <p class="card-button-text">Urgent</p>
-      </button>
-      <button class="card-button-delete">
-        <img src="./images/delete.svg" class="card-button-image" />
-        <p class="card-button-text">Delete</p>
-      </button>
-    </section>
-    </div>`);
+  var listTitle = document.querySelector('#taskTitleField').value
+  var toDoObj = new TodoList(Date.now(),listTitle, taskListArray);
+  parentSectionCards.insertAdjacentHTML('afterbegin', htmlToEmbed(toDoObj));
   var taskListParent = document.getElementById('cardTasklistParent');
-  console.log(taskListArray[0].innerText);
   for (var i = 0; i < taskListArray.length; i++) {
     var taskListObject = new Task(taskListArray[i].innerText, Date.now());
+    console.log("task list", taskListObject);
     addArrayToCard(taskListParent, taskListArray[i].innerText);
+    return taskListObject;
   }
 }
 
@@ -122,4 +105,29 @@ sideBarInputSection.addEventListener('click', disableAddTaskListButton)
 function disableAddTaskListButton() {
   (taskInputField.value == "") || (taskTitleBox.value == "") ?
   (makeToDoCard.disabled) = true: (makeToDoCard.disabled = false)
+}
+
+
+function htmlToEmbed(toDo) {
+  return `<div class="main-card-yellowContainer">
+    <section class="main-card-title">
+      <h3>${toDo.title}</h3>
+    </section>
+    <hr>
+      <section class="main-card-list">
+        <ul class="main-task-checkbox" id="cardTasklistParent">
+        </ul>
+      </section>
+      <hr>
+        <section class="main-card-buttons">
+          <button class="card-button-urgent">
+            <img src="./images/urgent.svg" class="card-button-image" />
+            <p class="card-button-text">Urgent</p>
+          </button>
+          <button class="card-button-delete">
+            <img src="./images/delete.svg" class="card-button-image" />
+            <p class="card-button-text">Delete</p>
+          </button>
+        </section>
+    </div>`
 }
