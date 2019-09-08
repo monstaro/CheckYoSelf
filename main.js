@@ -24,6 +24,7 @@ taskAddButton.addEventListener("click", disableTaskAddButton);
 taskListParent.addEventListener('click', deleteListItem);
 sideBarInputSection.addEventListener('click', disableAddTaskListButton);
 parentSectionCards.addEventListener('click', checkOffTask);
+parentSectionCards.addEventListener('click', deleteCard);
 
 
 
@@ -141,6 +142,34 @@ function taskCheckedCondition() {
   }
 }
 
+function deleteCard(event) {
+  console.log(event.target);
+  if (event.target.classList.contains('button-image-delete')){
+    var taskUniqueId = parseFloat(event.target.parentNode.parentNode.parentNode.id)
+    console.log("card unique id", taskUniqueId);
+    removeCardFromDom();
+    fromCardFromArray(taskUniqueId)
+  }
+}
+
+function removeCardFromDom() {
+  event.target.parentNode.parentNode.parentNode.remove();
+}
+
+function fromCardFromArray(htmlId) {
+  for (var i = 0; i < allTodoCardsArray.length; i++){
+    if (allTodoCardsArray[i].id === htmlId) {
+      var bigArrayItemIndex = allTodoCardsArray.indexOf(allTodoCardsArray[i]);
+      console.log(bigArrayItemIndex);
+      console.log("testtt", allTodoCardsArray[i].id, htmlId)
+      allTodoCardsArray.splice(bigArrayItemIndex, 1);
+      console.log("this is da todo array", allTodoCardsArray);
+    }
+  }
+}
+
+
+
 
 //   }
 // }
@@ -201,11 +230,11 @@ function htmlToEmbed(toDo) {
       <hr>
         <section class="main-card-buttons">
           <button class="card-button-urgent">
-            <img src="./images/urgent.svg" class="card-button-image" />
+            <img src="./images/urgent.svg" class="card-button-image button-image-urgent" />
             <p class="card-button-text">Urgent</p>
           </button>
           <button class="card-button-delete">
-            <img src="./images/delete.svg" class="card-button-image" />
+            <img src="./images/delete.svg" class="card-button-image button-image-delete" />
             <p class="card-button-text">Delete</p>
           </button>
         </section>
