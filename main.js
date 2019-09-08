@@ -25,7 +25,7 @@ taskListParent.addEventListener('click', deleteListItem);
 sideBarInputSection.addEventListener('click', disableAddTaskListButton);
 parentSectionCards.addEventListener('click', checkOffTask);
 parentSectionCards.addEventListener('click', deleteCard);
-
+parentSectionCards.addEventListener('click', makeCardUrgent);
 
 
 function addNewTask() {
@@ -168,6 +168,31 @@ function fromCardFromArray(htmlId) {
   }
 }
 
+function makeCardUrgent() {
+  if (event.target.classList.contains('button-image-urgent')){
+    var taskUniqueId = parseFloat(event.target.parentNode.parentNode.id);
+    console.log('card unique Id', taskUniqueId)
+    updateUrgentStateInDM(taskUniqueId);
+    cardUrgentCondition();
+  }
+}
+
+function updateUrgentStateInDM(htmlId) {
+  for (var i = 0; i < allTodoCardsArray.length; i++){
+    if (allTodoCardsArray[i].id === htmlId) {
+      allTodoCardsArray[i].updateToDo();
+      console.log('is it urgent?', allTodoCardsArray[i]);
+    }
+  }
+}
+
+function cardUrgentCondition() {
+  for (var i = 0; i < allTodoCardsArray.length; i++) {
+    if (allTodoCardsArray[i].urgent === true) {
+      
+    }
+  }
+}
 
 
 
