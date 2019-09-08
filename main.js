@@ -170,7 +170,7 @@ function fromCardFromArray(htmlId) {
 
 function makeCardUrgent() {
   if (event.target.classList.contains('button-image-urgent')){
-    var taskUniqueId = parseFloat(event.target.parentNode.parentNode.id);
+    var taskUniqueId = parseFloat(event.target.parentNode.parentNode.parentNode.id);
     console.log('card unique Id', taskUniqueId)
     updateUrgentStateInDM(taskUniqueId);
     cardUrgentCondition();
@@ -189,36 +189,38 @@ function updateUrgentStateInDM(htmlId) {
 function cardUrgentCondition() {
   for (var i = 0; i < allTodoCardsArray.length; i++) {
     if (allTodoCardsArray[i].urgent === true) {
-      
+      parentSectionCards.insertAdjacentHTML('afterbegin', urgentCardHtmlEmbed(allTodoCardsArray[i]));
+      var cardTasklistParent = document.getElementById('cardTasklistParent');
+      cardTasklistParent.insertAdjacentHTML('beforeend', taskHtmlToEmbed(allTodoCardsArray[i]));
+      taskCheckedCondition();
+
     }
   }
 }
 
-
-
-//   }
-// }
-// function taskUpdateCondition() {
-//   if (taskListObject.checkedOff = true) {
-//     img src =  ./images/checkbox-active.svg;
-//     classList.add("class that has the greyed out text")
-//   } else {
-//     img src =  ./images/checkbox.svg;
-//   }
-// }
-
-// function matchTaskIDtoDataModel(htmlId) {
-//   var matchingElement = 0;
-//   for (var i = 0; i < allTodoCardsArray.length; i++) {
-//     allTodoCardsArray[i].tasks.find(function(element));
-//     return element = htmlId;
-//       toDoObj.updateTask()
-//     // }
-//   }
-//
-// }
-
-
+function urgentCardHtmlEmbed(toDo) {
+  return `<div class="main-card-yellowContainer" id="${toDo.id}">
+    <section class="main-card-title">
+      <h3>${toDo.title}</h3>
+    </section>
+    <hr>
+      <section class="main-card-list">
+        <ul class="main-task-checkbox" id="cardTasklistParent">
+        </ul>
+      </section>
+      <hr>
+        <section class="main-card-buttons">
+          <button class="card-button-urgent">
+            <img src="./images/urgent-active.svg" class="card-button-image button-image-urgent" />
+            <p class="card-button-text">Urgent</p>
+          </button>
+          <button class="card-button-delete">
+            <img src="./images/delete.svg" class="card-button-image button-image-delete" />
+            <p class="card-button-text">Delete</p>
+          </button>
+        </section>
+    </div>`
+} 
 
 function taskHtmlToEmbed(toDo) {
   var fullStringArray = [];
