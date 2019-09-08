@@ -58,9 +58,14 @@ function addNewCard() {
   parentSectionCards.insertAdjacentHTML('afterbegin', htmlToEmbed(toDoObj));
   var cardtaskListParent = document.getElementById('cardTasklistParent');
   cardtaskListParent.insertAdjacentHTML('beforeend', taskHtmlToEmbed(toDoObj));
+  // clearAll(allTasksArray, taskTitleBox.value, taskListParent.innerText);
+  allTasksArray = [];
+  taskTitleBox.value = "";
+  taskListParent.innerText = "";
 }
 
 function clearAll() {
+  allTasksArray = [];
   taskTitleBox.value = "";
   taskListParent.innerText = "";
 }
@@ -128,6 +133,9 @@ function taskCheckedCondition() {
       if (arrayOfTasks[j].checkedOff === true) {
         var checkedListItemParent = document.getElementById(`${arrayOfTasks[j].id}`);
         checkedListItemParent.innerHTML = taskHtmlToEmbedActive(arrayOfTasks[j]);
+      } else {
+        var checkedListItemParent = document.getElementById(`${arrayOfTasks[j].id}`);
+        checkedListItemParent.innerHTML = taskHtmlToEmbedInactive(arrayOfTasks[j]);
       }
     }
   }
@@ -173,6 +181,11 @@ function taskHtmlToEmbedActive(task) {
   return `<img src="./images/checkbox-active.svg" class="main-task-icons">
     <p class="main-task-text-checked">${task.taskDescription}</p>`
   }
+
+function taskHtmlToEmbedInactive(task) {
+    return `<img src="./images/checkbox.svg" class="main-task-icons">
+      <p class="main-task-text">${task.taskDescription}</p>`
+    }
 
 
 function htmlToEmbed(toDo) {
