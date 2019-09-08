@@ -67,7 +67,7 @@ header {
 
 .sidebar {
   width: 33%;
-  padding: 1%;
+  padding: 0 1% 1% 1%;
   background-color: #587a8a;
   display: flex;
   flex-direction: column;
@@ -82,7 +82,7 @@ header {
 }
 
 .todoCreator-taskInput-textInputLabel {
-  color: #f3f6f7;
+  color: #f3f6f7aa;
   font-size: 1em;
   font-weight: 800;
   align-self: flex-start;
@@ -91,8 +91,8 @@ header {
 
 .todoCreator-taskInput-textInput {
   border: solid 2px #1f1f3d;
-  width: 95%;
-  padding: 2%;
+  width: 97%;
+  padding: 4% 0 4% 2%;
   font-size: 1.4em;
   border-radius: 3%;
   /* margin: 0 1em 2em 1em; */
@@ -100,8 +100,9 @@ header {
 }
 
 .sidebar-toDoCreator-taskList {
-  height: 200px;
-  overflow: scroll;
+  margin-top: 5%;
+  max-height: 300px;
+  overflow: auto;
 }
 
 .toDoCreator-taskList-fullList {
@@ -136,7 +137,7 @@ header {
 }
 
 .todoCreator-taskInput-itemInputLabel {
-  color: #f3f6f7;
+  color: #f3f6f7aa;
   font-size: 1em;
   font-weight: 800;
   align-self: flex-start;
@@ -189,13 +190,14 @@ header {
   flex-direction: column;
   flex-wrap: wrap;
   overflow: scroll;
-  width: 66%
+  width: 66%;
+  margin: 1.5%;
   }
 
 .main-card-greyContainer {
   width: 40%;
   height: auto;
-  margin: 5%;
+  margin: 1.5%;
   background-color: #FAFDFF;
   border: 2px solid #C7D3D8;
   padding: 2%;
@@ -204,7 +206,7 @@ header {
 .main-card-yellowContainer {
   width: 40%;
   height: auto;
-  margin: 5%;
+  margin: 1.5%;
   background-color: #FFE89D;
   border: 2px solid #C7D3D8;
   padding: 2%;
@@ -242,7 +244,7 @@ header {
   padding: 2%;
   width: auto;
   font-style: italic;
-  color: gray;
+  color: #587A8A;
 }
 
 .main-card-buttons {
@@ -278,4 +280,55 @@ header {
   padding: 5%;
   border-radius: 3px;
   margin: 0 0 2em 0;
+}
+
+@media all and (max-width: 600px)
+{
+.sidebar-and-main {
+  /* display: block;
+  float: none;  */
+  display: flex;
+  flex-direction: column;
+  width: 98%;
+  height: 100%;
+    }
+.sidebar {
+  width: 100%;
+  padding: 2%;
+
+}
+
+.main-card-background {
+  width: 100%;
+}
+
+.main-card-yellowContainer {
+  width: 90%;
+}
+
+header {
+  width: 98%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* text-align: center; */
+}
+
+.header-searchbar-buttonAndInput {
+  margin: 2%;
+  width: 100%;
+  align-self: center;
+  padding: 1%;
+
+  /* height: 100% */
+}
+
+.header-searchbar-button {
+  /* padding: 4%; */
+  width: 10%;
+}
+
+.header-searchbar-input {
+  padding: 4%;
+  width: 90%;
 }
