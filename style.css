@@ -192,6 +192,7 @@ header {
   margin: 5%;
   background-color: #FAFDFF;
   border: 2px solid #C7D3D8;
+  padding: 2%;
 }
 
 .main-card-yellowContainer {
@@ -229,6 +230,13 @@ header {
 .main-task-text {
   padding: 2%;
   width: auto;
+}
+
+.main-task-text-checked {
+  padding: 2%;
+  width: auto;
+  font-style: italic;
+  color: gray;
 }
 
 .main-card-buttons {
