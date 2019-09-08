@@ -23,7 +23,7 @@ taskTitleField.addEventListener('keyup', disableTaskAddButton);
 taskAddButton.addEventListener("click", disableTaskAddButton);
 taskListParent.addEventListener('click', deleteListItem);
 sideBarInputSection.addEventListener('click', disableAddTaskListButton);
-// parentSectionCards.addEventListener('click', checkOffTask);
+parentSectionCards.addEventListener('click', checkOffTask);
 
 
 
@@ -38,6 +38,8 @@ function addNewTask() {
 
 var allTasksArray = [];
 var allTodoCardsArray = [];
+
+
 
 function addNewCard() {
   var taskListArray = document.querySelectorAll("#taskText");
@@ -54,8 +56,8 @@ function addNewCard() {
   console.log("array of todo lists", allTodoCardsArray);
   console.log("full todo card", toDoObj);
   parentSectionCards.insertAdjacentHTML('afterbegin', htmlToEmbed(toDoObj));
-  var taskListParent = document.getElementById('cardTasklistParent');
-  taskListParent.insertAdjacentHTML('beforeend', taskHtmlToEmbed(toDoObj));
+  var cardtaskListParent = document.getElementById('cardTasklistParent');
+  cardtaskListParent.insertAdjacentHTML('beforeend', taskHtmlToEmbed(toDoObj));
 }
 
 function clearAll() {
@@ -93,24 +95,47 @@ function disableAddTaskListButton() {
 function checkOffTask(event) {
   console.log(event.target);
   if (event.target.classList.contains('main-task-icons')) {
-    var uniqueIdOfTask = event.target.closest.id;
+    var uniqueIdOfTask = parseFloat(event.target.parentNode.id);
     console.log("checking to see if we got the uid", uniqueIdOfTask);
     matchTaskIDtoDataModel(uniqueIdOfTask);
-
+    taskCheckedCondition();
   }
 }
 
 function matchTaskIDtoDataModel(htmlId) {
-  var matchingElement = 0;
+  // var matchingElement = 0;
+  console.log("the matching function is running")
   for (var i = 0; i < allTodoCardsArray.length; i++) {
-    allTodoCardsArray[i].tasks.find(function(element));
-    return element = htmlId;
-      toDoObj.updateTask()
-    // }
+    var arrayOfTasks = allTodoCardsArray[i].tasks
+    console.log(arrayOfTasks[1]);
+    for (var j = 0; j < arrayOfTasks.length; j++) {
+      console.log(arrayOfTasks[j].id, htmlId);
+      if (arrayOfTasks[j].id === htmlId) {
+        allTodoCardsArray[i].updateTask(arrayOfTasks[j]);
+        console.log("this is the thing whose checkedOff? state we are checking", arrayOfTasks[j]);
+      }
+    }
   }
-
 }
 
+function taskCheckedCondition() {
+  // var matchingElement = 0;
+  console.log("the conditioj function is running")
+  for (var i = 0; i < allTodoCardsArray.length; i++) {
+    var arrayOfTasks = allTodoCardsArray[i].tasks
+    console.log(arrayOfTasks[1]);
+    for (var j = 0; j < arrayOfTasks.length; j++) {
+      if (arrayOfTasks[j].checkedOff === true) {
+        var checkedListItemParent = document.getElementById(`${arrayOfTasks[j].id}`);
+        checkedListItemParent.innerHTML = taskHtmlToEmbedActive(arrayOfTasks[j]);
+      }
+    }
+  }
+}
+
+
+//   }
+// }
 // function taskUpdateCondition() {
 //   if (taskListObject.checkedOff = true) {
 //     img src =  ./images/checkbox-active.svg;
@@ -119,6 +144,19 @@ function matchTaskIDtoDataModel(htmlId) {
 //     img src =  ./images/checkbox.svg;
 //   }
 // }
+
+// function matchTaskIDtoDataModel(htmlId) {
+//   var matchingElement = 0;
+//   for (var i = 0; i < allTodoCardsArray.length; i++) {
+//     allTodoCardsArray[i].tasks.find(function(element));
+//     return element = htmlId;
+//       toDoObj.updateTask()
+//     // }
+//   }
+//
+// }
+
+
 
 function taskHtmlToEmbed(toDo) {
   var fullStringArray = [];
@@ -130,6 +168,12 @@ function taskHtmlToEmbed(toDo) {
   }
   return fullStringArray.join("");
 }
+
+function taskHtmlToEmbedActive(task) {
+  return `<img src="./images/checkbox-active.svg" class="main-task-icons">
+    <p class="main-task-text-checked">${task.taskDescription}</p>`
+  }
+
 
 function htmlToEmbed(toDo) {
   return `<div class="main-card-greyContainer" id="${toDo.id}">
