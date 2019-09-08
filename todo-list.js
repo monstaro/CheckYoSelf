@@ -1,6 +1,6 @@
 class TodoList {
   constructor(id, title, array) {
-    this.id = id || Date.now();
+    this.id = id || (Date.now() + Math.random());
     this.title = title;
     this.urgent = false;
     this.tasks = array;
@@ -15,6 +15,6 @@ class TodoList {
 
   }
   updateTask() {
-    this.tasks[].checkedOff = true;
+    taskListObject.checkedOff = !taskListObject.checkedOff;
   }
 }
