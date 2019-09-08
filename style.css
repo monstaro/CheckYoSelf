@@ -232,6 +232,13 @@ header {
   width: auto;
 }
 
+.main-task-text-checked {
+  padding: 2%;
+  width: auto;
+  font-style: italic;
+  color: gray;
+}
+
 .main-card-buttons {
   display: flex;
   justify-content: space-between;

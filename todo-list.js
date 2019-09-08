@@ -14,7 +14,7 @@ class TodoList {
   updateToDo() {
 
   }
-  updateTask() {
-    taskListObject.checkedOff = !taskListObject.checkedOff;
+  updateTask(task) {
+    task.checkedOff = !task.checkedOff;
   }
 }
