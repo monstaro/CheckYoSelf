@@ -24,7 +24,8 @@ taskAddButton.addEventListener("click", disableTaskAddButton);
 taskListParent.addEventListener('click', deleteListItem);
 sideBarInputSection.addEventListener('click', disableAddTaskListButton);
 parentSectionCards.addEventListener('click', checkOffTask);
-
+parentSectionCards.addEventListener('click', deleteCard);
+parentSectionCards.addEventListener('click', makeCardUrgent);
 
 
 function addNewTask() {
@@ -58,9 +59,14 @@ function addNewCard() {
   parentSectionCards.insertAdjacentHTML('afterbegin', htmlToEmbed(toDoObj));
   var cardtaskListParent = document.getElementById('cardTasklistParent');
   cardtaskListParent.insertAdjacentHTML('beforeend', taskHtmlToEmbed(toDoObj));
+  // clearAll(allTasksArray, taskTitleBox.value, taskListParent.innerText);
+  allTasksArray = [];
+  taskTitleBox.value = "";
+  taskListParent.innerText = "";
 }
 
 function clearAll() {
+  allTasksArray = [];
   taskTitleBox.value = "";
   taskListParent.innerText = "";
 }
@@ -128,35 +134,93 @@ function taskCheckedCondition() {
       if (arrayOfTasks[j].checkedOff === true) {
         var checkedListItemParent = document.getElementById(`${arrayOfTasks[j].id}`);
         checkedListItemParent.innerHTML = taskHtmlToEmbedActive(arrayOfTasks[j]);
+      } else {
+        var checkedListItemParent = document.getElementById(`${arrayOfTasks[j].id}`);
+        checkedListItemParent.innerHTML = taskHtmlToEmbedInactive(arrayOfTasks[j]);
       }
     }
   }
 }
 
+function deleteCard(event) {
+  console.log(event.target);
+  if (event.target.classList.contains('button-image-delete')){
+    var taskUniqueId = parseFloat(event.target.parentNode.parentNode.parentNode.id)
+    console.log("card unique id", taskUniqueId);
+    removeCardFromDom();
+    fromCardFromArray(taskUniqueId)
+  }
+}
 
-//   }
-// }
-// function taskUpdateCondition() {
-//   if (taskListObject.checkedOff = true) {
-//     img src =  ./images/checkbox-active.svg;
-//     classList.add("class that has the greyed out text")
-//   } else {
-//     img src =  ./images/checkbox.svg;
-//   }
-// }
+function removeCardFromDom() {
+  event.target.parentNode.parentNode.parentNode.remove();
+}
 
-// function matchTaskIDtoDataModel(htmlId) {
-//   var matchingElement = 0;
-//   for (var i = 0; i < allTodoCardsArray.length; i++) {
-//     allTodoCardsArray[i].tasks.find(function(element));
-//     return element = htmlId;
-//       toDoObj.updateTask()
-//     // }
-//   }
-//
-// }
+function fromCardFromArray(htmlId) {
+  for (var i = 0; i < allTodoCardsArray.length; i++){
+    if (allTodoCardsArray[i].id === htmlId) {
+      var bigArrayItemIndex = allTodoCardsArray.indexOf(allTodoCardsArray[i]);
+      console.log(bigArrayItemIndex);
+      console.log("testtt", allTodoCardsArray[i].id, htmlId)
+      allTodoCardsArray.splice(bigArrayItemIndex, 1);
+      console.log("this is da todo array", allTodoCardsArray);
+    }
+  }
+}
 
+function makeCardUrgent() {
+  if (event.target.classList.contains('button-image-urgent')){
+    var taskUniqueId = parseFloat(event.target.parentNode.parentNode.parentNode.id);
+    console.log('card unique Id', taskUniqueId)
+    updateUrgentStateInDM(taskUniqueId);
+    cardUrgentCondition();
+  }
+}
 
+function updateUrgentStateInDM(htmlId) {
+  for (var i = 0; i < allTodoCardsArray.length; i++){
+    if (allTodoCardsArray[i].id === htmlId) {
+      allTodoCardsArray[i].updateToDo();
+      console.log('is it urgent?', allTodoCardsArray[i]);
+    }
+  }
+}
+
+function cardUrgentCondition() {
+  for (var i = 0; i < allTodoCardsArray.length; i++) {
+    if (allTodoCardsArray[i].urgent === true) {
+      parentSectionCards.insertAdjacentHTML('afterbegin', urgentCardHtmlEmbed(allTodoCardsArray[i]));
+      var cardTasklistParent = document.getElementById('cardTasklistParent');
+      cardTasklistParent.insertAdjacentHTML('beforeend', taskHtmlToEmbed(allTodoCardsArray[i]));
+      taskCheckedCondition();
+
+    }
+  }
+}
+
+function urgentCardHtmlEmbed(toDo) {
+  return `<div class="main-card-yellowContainer" id="${toDo.id}">
+    <section class="main-card-title">
+      <h3>${toDo.title}</h3>
+    </section>
+    <hr>
+      <section class="main-card-list">
+        <ul class="main-task-checkbox" id="cardTasklistParent">
+        </ul>
+      </section>
+      <hr>
+        <section class="main-card-buttons">
+          <button class="card-button-urgent">
+            <img src="./images/urgent-active.svg" class="card-button-image button-image-urgent" />
+            <p class="card-button-text">Urgent</p>
+          </button>
+          <button class="card-button-delete">
+            <img src="./images/delete.svg" class="card-button-image button-image-delete" />
+            <p class="card-button-text">Delete</p>
+          </button>
+        </section>
+    </div>`
+} 
 
 function taskHtmlToEmbed(toDo) {
   var fullStringArray = [];
@@ -174,6 +238,11 @@ function taskHtmlToEmbedActive(task) {
     <p class="main-task-text-checked">${task.taskDescription}</p>`
   }
 
+function taskHtmlToEmbedInactive(task) {
+    return `<img src="./images/checkbox.svg" class="main-task-icons">
+      <p class="main-task-text">${task.taskDescription}</p>`
+    }
+
 
 function htmlToEmbed(toDo) {
   return `<div class="main-card-greyContainer" id="${toDo.id}">
@@ -188,11 +257,11 @@ function htmlToEmbed(toDo) {
       <hr>
         <section class="main-card-buttons">
           <button class="card-button-urgent">
-            <img src="./images/urgent.svg" class="card-button-image" />
+            <img src="./images/urgent.svg" class="card-button-image button-image-urgent" />
             <p class="card-button-text">Urgent</p>
           </button>
           <button class="card-button-delete">
-            <img src="./images/delete.svg" class="card-button-image" />
+            <img src="./images/delete.svg" class="card-button-image button-image-delete" />
             <p class="card-button-text">Delete</p>
           </button>
         </section>

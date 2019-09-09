@@ -21,7 +21,7 @@ class TodoList {
 
   }
   updateToDo() {
-
+    this.urgent = !this.urgent;
   }
   updateTask(task) {
     task.checkedOff = !task.checkedOff;

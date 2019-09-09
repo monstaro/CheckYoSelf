@@ -29,7 +29,8 @@ header {
 
 .header-searchbar-buttonAndInput {
   display: flex;
-  width: 31%;
+  width: 35%;
+  justify-content: flex-end;
 }
 
 .header-searchbar-button {
@@ -37,18 +38,20 @@ header {
   background-position: center;
   background-color: #C8D3D9;
   border-radius: 5% 0 0 5%;
-  justify-content: center;
-  padding: 3%;
+  /* justify-content: flex-end; */
+  /* padding: 3%; */
   height: inherit;
-  width: 15%;
+  width: 13%;
 }
 
 .header-searchbar-input {
   height: inherit;
-  width: 72%;
+  width: 70%;
   border-bottom-right-radius: 3px;
   border-top-right-radius: 3px;
   font-size: 1em;
+  border-style: none;
+  padding-left: 5%;
 }
 
 .searchbar-button-image {
@@ -64,6 +67,7 @@ header {
 
 .sidebar {
   width: 33%;
+  padding: 0 1% 1% 1%;
   background-color: #587a8a;
   display: flex;
   flex-direction: column;
@@ -78,25 +82,27 @@ header {
 }
 
 .todoCreator-taskInput-textInputLabel {
-  color: #f3f6f7;
+  color: #f3f6f7aa;
   font-size: 1em;
   font-weight: 800;
   align-self: flex-start;
-  margin: 2em auto 0 1.5em;
+  margin: 2em auto 0 .5em;
 }
 
 .todoCreator-taskInput-textInput {
   border: solid 2px #1f1f3d;
-  width: 82%;
-  padding: 2%;
+  width: 97%;
+  padding: 4% 0 4% 2%;
   font-size: 1.4em;
   border-radius: 3%;
-  margin: 0 1em 2em 1em;
+  /* margin: 0 1em 2em 1em; */
+  height: 9%;
 }
 
 .sidebar-toDoCreator-taskList {
-  height: 200px;
-  overflow: scroll;
+  margin-top: 5%;
+  max-height: 300px;
+  overflow: auto;
 }
 
 .toDoCreator-taskList-fullList {
@@ -131,11 +137,11 @@ header {
 }
 
 .todoCreator-taskInput-itemInputLabel {
-  color: #f3f6f7;
+  color: #f3f6f7aa;
   font-size: 1em;
   font-weight: 800;
   align-self: flex-start;
-  margin: 1em auto 0 1.5em;
+  margin: 1em auto 0 .5em;
 }
 
 .itemInput-container-textAndButton {
@@ -152,7 +158,7 @@ header {
   font-size: 1.4em;
   border-top-left-radius: : 3%;
   border-bottom-left-radius: 3%;
-  margin: 0 0 0 1em;
+  /* margin: 0 0 0 1em; */
 }
 
 .todoCreator-itemInput-button {
@@ -165,7 +171,7 @@ header {
   border: .1px solid #1f1f3d;
   border-top-right-radius: : 3%;
   border-bottom-right-radius: 3%;
-  margin-right: .33em;
+  /* margin-right: .33em; */
   padding: 0;
 }
 
@@ -176,6 +182,7 @@ header {
 
 .sidebar-buttonsList-button:disabled {
   background-color: #60606a;
+  border-style: none;
 }
 
 .main-card-background {
@@ -183,13 +190,14 @@ header {
   flex-direction: column;
   flex-wrap: wrap;
   overflow: scroll;
-  width: 66%
+  width: 66%;
+  margin: 1.5%;
   }
 
 .main-card-greyContainer {
   width: 40%;
   height: auto;
-  margin: 5%;
+  margin: 1.5%;
   background-color: #FAFDFF;
   border: 2px solid #C7D3D8;
   padding: 2%;
@@ -198,7 +206,7 @@ header {
 .main-card-yellowContainer {
   width: 40%;
   height: auto;
-  margin: 5%;
+  margin: 1.5%;
   background-color: #FFE89D;
   border: 2px solid #C7D3D8;
   padding: 2%;
@@ -236,7 +244,7 @@ header {
   padding: 2%;
   width: auto;
   font-style: italic;
-  color: gray;
+  color: #587A8A;
 }
 
 .main-card-buttons {
@@ -268,8 +276,59 @@ header {
   color: #ffffff;
   font-weight: bold;
   font-size: 1.1em;
-  width: 91%;
+  width: 100%;
   padding: 5%;
   border-radius: 3px;
-  margin: 0 0 3em 1em;
+  margin: 0 0 2em 0;
+}
+
+@media all and (max-width: 600px)
+{
+.sidebar-and-main {
+  /* display: block;
+  float: none;  */
+  display: flex;
+  flex-direction: column;
+  width: 98%;
+  height: 100%;
+    }
+.sidebar {
+  width: 100%;
+  padding: 2%;
+
+}
+
+.main-card-background {
+  width: 100%;
+}
+
+.main-card-yellowContainer {
+  width: 90%;
+}
+
+header {
+  width: 98%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* text-align: center; */
+}
+
+.header-searchbar-buttonAndInput {
+  margin: 2%;
+  width: 100%;
+  align-self: center;
+  padding: 1%;
+
+  /* height: 100% */
+}
+
+.header-searchbar-button {
+  /* padding: 4%; */
+  width: 10%;
+}
+
+.header-searchbar-input {
+  padding: 4%;
+  width: 90%;
 }
