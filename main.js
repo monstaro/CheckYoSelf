@@ -49,17 +49,12 @@ function addNewCard() {
   for (var i = 0; i < taskListArray.length; i++) {
     var taskListObject = new Task(taskListArray[i].innerText, (Date.now() + Math.random()));
     allTasksArray.push(taskListObject);
-    console.log("array of tasks", allTasksArray);
-    console.log("task list", taskListObject);
   }
-  var toDoObj = new TodoList((Date.now() + Math.random()),listTitle, allTasksArray);
+  var toDoObj = new TodoList((Date.now() + Math.random()),listTitle, allTasksArray, (Date.now() + Math.random()));
   allTodoCardsArray.push(toDoObj);
-  console.log("array of todo lists", allTodoCardsArray);
-  console.log("full todo card", toDoObj);
   parentSectionCards.insertAdjacentHTML('afterbegin', htmlToEmbed(toDoObj));
   var cardtaskListParent = document.getElementById('cardTasklistParent');
   cardtaskListParent.insertAdjacentHTML('beforeend', taskHtmlToEmbed(toDoObj));
-  // clearAll(allTasksArray, taskTitleBox.value, taskListParent.innerText);
   allTasksArray = [];
   taskTitleBox.value = "";
   taskListParent.innerText = "";
@@ -99,37 +94,27 @@ function disableAddTaskListButton() {
 }
 
 function checkOffTask(event) {
-  console.log(event.target);
   if (event.target.classList.contains('main-task-icons')) {
     var uniqueIdOfTask = parseFloat(event.target.parentNode.id);
-    console.log("checking to see if we got the uid", uniqueIdOfTask);
     matchTaskIDtoDataModel(uniqueIdOfTask);
     taskCheckedCondition();
   }
 }
 
 function matchTaskIDtoDataModel(htmlId) {
-  // var matchingElement = 0;
-  console.log("the matching function is running")
   for (var i = 0; i < allTodoCardsArray.length; i++) {
     var arrayOfTasks = allTodoCardsArray[i].tasks
-    console.log(arrayOfTasks[1]);
     for (var j = 0; j < arrayOfTasks.length; j++) {
-      console.log(arrayOfTasks[j].id, htmlId);
       if (arrayOfTasks[j].id === htmlId) {
         allTodoCardsArray[i].updateTask(arrayOfTasks[j]);
-        console.log("this is the thing whose checkedOff? state we are checking", arrayOfTasks[j]);
       }
     }
   }
 }
 
 function taskCheckedCondition() {
-  // var matchingElement = 0;
-  console.log("the conditioj function is running")
   for (var i = 0; i < allTodoCardsArray.length; i++) {
     var arrayOfTasks = allTodoCardsArray[i].tasks
-    console.log(arrayOfTasks[1]);
     for (var j = 0; j < arrayOfTasks.length; j++) {
       if (arrayOfTasks[j].checkedOff === true) {
         var checkedListItemParent = document.getElementById(`${arrayOfTasks[j].id}`);
@@ -146,7 +131,6 @@ function deleteCard(event) {
   console.log(event.target);
   if (event.target.classList.contains('button-image-delete')){
     var taskUniqueId = parseFloat(event.target.parentNode.parentNode.parentNode.id)
-    console.log("card unique id", taskUniqueId);
     removeCardFromDom();
     fromCardFromArray(taskUniqueId)
   }
@@ -160,10 +144,7 @@ function fromCardFromArray(htmlId) {
   for (var i = 0; i < allTodoCardsArray.length; i++){
     if (allTodoCardsArray[i].id === htmlId) {
       var bigArrayItemIndex = allTodoCardsArray.indexOf(allTodoCardsArray[i]);
-      console.log(bigArrayItemIndex);
-      console.log("testtt", allTodoCardsArray[i].id, htmlId)
       allTodoCardsArray.splice(bigArrayItemIndex, 1);
-      console.log("this is da todo array", allTodoCardsArray);
     }
   }
 }
@@ -171,9 +152,8 @@ function fromCardFromArray(htmlId) {
 function makeCardUrgent() {
   if (event.target.classList.contains('button-image-urgent')){
     var taskUniqueId = parseFloat(event.target.parentNode.parentNode.parentNode.id);
-    console.log('card unique Id', taskUniqueId)
     updateUrgentStateInDM(taskUniqueId);
-    cardUrgentCondition();
+    cardUrgentCondition(event);
   }
 }
 
@@ -181,7 +161,6 @@ function updateUrgentStateInDM(htmlId) {
   for (var i = 0; i < allTodoCardsArray.length; i++){
     if (allTodoCardsArray[i].id === htmlId) {
       allTodoCardsArray[i].updateToDo();
-      console.log('is it urgent?', allTodoCardsArray[i]);
     }
   }
 }
@@ -189,38 +168,18 @@ function updateUrgentStateInDM(htmlId) {
 function cardUrgentCondition() {
   for (var i = 0; i < allTodoCardsArray.length; i++) {
     if (allTodoCardsArray[i].urgent === true) {
-      parentSectionCards.insertAdjacentHTML('afterbegin', urgentCardHtmlEmbed(allTodoCardsArray[i]));
-      var cardTasklistParent = document.getElementById('cardTasklistParent');
-      cardTasklistParent.insertAdjacentHTML('beforeend', taskHtmlToEmbed(allTodoCardsArray[i]));
-      taskCheckedCondition();
-
+      var cardStylingContainer = document.getElementById(`${allTodoCardsArray[i].id}`);
+      cardStylingContainer.className = "main-card-yellowContainer";
+      var cardButtonElement = document.getElementById(`${allTodoCardsArray[i].buttonID}`);
+      cardButtonElement.src = "./images/urgent-active.svg";
+    } else {
+      var cardStylingContainer = document.getElementById(`${allTodoCardsArray[i].id}`);
+      cardStylingContainer.className = "main-card-greyContainer";
+      var cardButtonElement = document.getElementById(`${allTodoCardsArray[i].buttonID}`);
+      cardButtonElement.src = "./images/urgent.svg";
     }
   }
 }
-
-function urgentCardHtmlEmbed(toDo) {
-  return `<div class="main-card-yellowContainer" id="${toDo.id}">
-    <section class="main-card-title">
-      <h3>${toDo.title}</h3>
-    </section>
-    <hr>
-      <section class="main-card-list">
-        <ul class="main-task-checkbox" id="cardTasklistParent">
-        </ul>
-      </section>
-      <hr>
-        <section class="main-card-buttons">
-          <button class="card-button-urgent">
-            <img src="./images/urgent-active.svg" class="card-button-image button-image-urgent" />
-            <p class="card-button-text">Urgent</p>
-          </button>
-          <button class="card-button-delete">
-            <img src="./images/delete.svg" class="card-button-image button-image-delete" />
-            <p class="card-button-text">Delete</p>
-          </button>
-        </section>
-    </div>`
-} 
 
 function taskHtmlToEmbed(toDo) {
   var fullStringArray = [];
@@ -236,13 +195,12 @@ function taskHtmlToEmbed(toDo) {
 function taskHtmlToEmbedActive(task) {
   return `<img src="./images/checkbox-active.svg" class="main-task-icons">
     <p class="main-task-text-checked">${task.taskDescription}</p>`
-  }
+}
 
 function taskHtmlToEmbedInactive(task) {
-    return `<img src="./images/checkbox.svg" class="main-task-icons">
-      <p class="main-task-text">${task.taskDescription}</p>`
-    }
-
+  return `<img src="./images/checkbox.svg" class="main-task-icons">
+    <p class="main-task-text">${task.taskDescription}</p>`
+}
 
 function htmlToEmbed(toDo) {
   return `<div class="main-card-greyContainer" id="${toDo.id}">
@@ -257,7 +215,7 @@ function htmlToEmbed(toDo) {
       <hr>
         <section class="main-card-buttons">
           <button class="card-button-urgent">
-            <img src="./images/urgent.svg" class="card-button-image button-image-urgent" />
+            <img id="${toDo.buttonID}" src="./images/urgent.svg" class="card-button-image button-image-urgent" />
             <p class="card-button-text">Urgent</p>
           </button>
           <button class="card-button-delete">
