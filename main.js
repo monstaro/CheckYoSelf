@@ -40,6 +40,9 @@ function addNewTask() {
 var allTasksArray = [];
 var allTodoCardsArray = [];
 
+// function getCardsBack() {
+//   JSON.parse(localStorage.getItem("bigArray"))
+// }
 
 
 function addNewCard() {
@@ -55,6 +58,7 @@ function addNewCard() {
   parentSectionCards.insertAdjacentHTML('afterbegin', htmlToEmbed(toDoObj));
   var cardtaskListParent = document.getElementById('cardTasklistParent');
   cardtaskListParent.insertAdjacentHTML('beforeend', taskHtmlToEmbed(toDoObj));
+  toDoObj.saveToStorage(allTodoCardsArray);
   allTasksArray = [];
   taskTitleBox.value = "";
   taskListParent.innerText = "";
@@ -119,9 +123,11 @@ function taskCheckedCondition() {
       if (arrayOfTasks[j].checkedOff === true) {
         var checkedListItemParent = document.getElementById(`${arrayOfTasks[j].id}`);
         checkedListItemParent.innerHTML = taskHtmlToEmbedActive(arrayOfTasks[j]);
+        callSaveToStorage(allTodoCardsArray[i]);
       } else {
         var checkedListItemParent = document.getElementById(`${arrayOfTasks[j].id}`);
         checkedListItemParent.innerHTML = taskHtmlToEmbedInactive(arrayOfTasks[j]);
+        callSaveToStorage(allTodoCardsArray[i]);
       }
     }
   }
@@ -152,6 +158,7 @@ function fromCardFromArray(htmlId) {
     if (allTodoCardsArray[i].id === htmlId) {
       var bigArrayItemIndex = allTodoCardsArray.indexOf(allTodoCardsArray[i]);
       allTodoCardsArray.splice(bigArrayItemIndex, 1);
+      callSaveToStorage(allTodoCardsArray[i]);
     }
   }
 }
@@ -170,7 +177,9 @@ function assertAllTasksCheckedOff(task) {
     }
   }
 
-
+function callSaveToStorage(bigArrayObj) {
+  bigArrayObj.saveToStorage(allTodoCardsArray);
+}
 
 function makeCardUrgent() {
   if (event.target.classList.contains('button-image-urgent')){
@@ -195,11 +204,13 @@ function cardUrgentCondition() {
       cardStylingContainer.className = "main-card-yellowContainer";
       var cardButtonElement = document.getElementById(`${allTodoCardsArray[i].buttonID}`);
       cardButtonElement.src = "./images/urgent-active.svg";
+      callSaveToStorage(allTodoCardsArray[i]);
     } else {
       var cardStylingContainer = document.getElementById(`${allTodoCardsArray[i].id}`);
       cardStylingContainer.className = "main-card-greyContainer";
       var cardButtonElement = document.getElementById(`${allTodoCardsArray[i].buttonID}`);
       cardButtonElement.src = "./images/urgent.svg";
+      callSaveToStorage(allTodoCardsArray[i]);
     }
   }
 }

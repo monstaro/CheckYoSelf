@@ -6,10 +6,10 @@ class TodoList {
     this.tasks = array;
     this.buttonID = buttonID || (Date.now() + Math.random());
   }
-  saveToStorage() {
-    // localStorage.setItem("name", name)
-    //call on card object
+  saveToStorage(bigArray) {
+    localStorage.setItem("bigArray", JSON.stringify(bigArray));
   }
+
   deleteFromStorage() {
 
   }
