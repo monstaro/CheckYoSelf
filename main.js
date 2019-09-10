@@ -129,12 +129,19 @@ function taskCheckedCondition() {
 
 function deleteCard(event) {
   console.log(event.target);
-  if (event.target.classList.contains('button-image-delete')){
-    var taskUniqueId = parseFloat(event.target.parentNode.parentNode.parentNode.id)
+  var taskUniqueId = parseFloat(event.target.parentNode.parentNode.parentNode.id);
+  var toDoListToDelete = findTodoListById(taskUniqueId);
+  if (event.target.classList.contains('button-image-delete') && toDoListToDelete.tasks.every(assertAllTasksCheckedOff)) {
     removeCardFromDom();
-    fromCardFromArray(taskUniqueId)
+    fromCardFromArray(taskUniqueId);
   }
 }
+
+function assertAllTasksCheckedOff(task) {
+    if (task.checkedOff === true) {
+      return true;
+    }
+  }
 
 function removeCardFromDom() {
   event.target.parentNode.parentNode.parentNode.remove();
@@ -148,6 +155,22 @@ function fromCardFromArray(htmlId) {
     }
   }
 }
+
+function findTodoListById(htmlId) {
+  for (var i = 0; i < allTodoCardsArray.length; i++) {
+    if (allTodoCardsArray[i].id === htmlId) {
+      return allTodoCardsArray[i];
+    }
+  }
+}
+
+function assertAllTasksCheckedOff(task) {
+    if (task.checkedOff === true) {
+      return true;
+    }
+  }
+
+
 
 function makeCardUrgent() {
   if (event.target.classList.contains('button-image-urgent')){
