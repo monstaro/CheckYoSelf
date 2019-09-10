@@ -22,10 +22,10 @@ class TodoList {
     this.buttonID = buttonID || (Date.now() + Math.random());
 >>>>>>> 78bd67366bd9af713622f241165ae69f5218136f
   }
-  saveToStorage() {
-    // localStorage.setItem("name", name)
-    //call on card object
+  saveToStorage(bigArray) {
+    localStorage.setItem("bigArray", JSON.stringify(bigArray));
   }
+
   deleteFromStorage() {
 
   }
