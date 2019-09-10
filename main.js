@@ -10,7 +10,9 @@ var taskListParent = document.getElementById('taskListParent');
 var makeToDoCard = document.getElementById('makeToDoCard');
 var sideBarInputSection = document.querySelector('.sidebar-toDoCreator-inputsAndList');
 var parentSectionCards = document.getElementById('parentSectionCards');
+var deleteDemoCardIcon = document.querySelector('.demoButton')
 
+deleteDemoCardIcon.addEventListener('click', closeDemoCard);
 taskAddButton.addEventListener('click', addNewTask);
 // taskAddButton.addEventListener('click', addNewTask);
 // clearAllButton.addEventListener('click', clearAll);
@@ -26,6 +28,12 @@ sideBarInputSection.addEventListener('click', disableAddTaskListButton);
 parentSectionCards.addEventListener('click', checkOffTask);
 parentSectionCards.addEventListener('click', deleteCard);
 parentSectionCards.addEventListener('click', makeCardUrgent);
+
+
+function closeDemoCard(event) {
+  event.target.parentNode.parentNode.parentNode.remove();
+  }
+
 
 
 function addNewTask() {
