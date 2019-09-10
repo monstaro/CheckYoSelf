@@ -1,4 +1,4 @@
-5* {
+* {
   margin: 0;
   padding: 0;
 }
@@ -185,6 +185,21 @@ header {
   border-style: none;
 }
 
+.button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.5),
+    0 0 0 1.5px rgba(255, 105, 180, 0.5);
+  border-radius: 15px;
+}
+
+.button:hover {
+  cursor: pointer;
+}
+
+.demoButton:hover {
+  cursor: pointer;
+}
+
 .main-card-background {
   display: flex;
   flex-direction: column;
@@ -289,25 +304,46 @@ header {
   float: none;  */
   display: flex;
   flex-direction: column;
-  width: 98%;
-  height: 100%;
+  width: 100%;
+  height: auto;
     }
 .sidebar {
-  width: 100%;
+  width: auto;
   padding: 2%;
-
 }
 
 .main-card-background {
-  width: 100%;
+  width: 95%;
+  display: flex;
+  flex-direction: row;
 }
+
+.main-card-greyContainer {
+  width: 90%;
+  height: auto;
+  margin: 1.5%;
+  background-color: #FAFDFF;
+  border: 2px solid #C7D3D8;
+  padding: 2%;
+}
+
+.main-card-yellowContainer {
+  width: 40%;
+  height: auto;
+  margin: 1.5%;
+  background-color: #FFE89D;
+  border: 2px solid #C7D3D8;
+  padding: 2%;
+}
+
 
 .main-card-yellowContainer {
   width: 90%;
 }
 
+
 header {
-  width: 98%;
+  width: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -331,4 +367,81 @@ header {
 .header-searchbar-input {
   padding: 4%;
   width: 90%;
+}
+
+
+@media all and (max-width: 350px)
+{
+.sidebar-and-main {
+  /* display: block;
+  float: none;  */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+    }
+.sidebar {
+  width: auto;
+  padding: 2%;
+}
+
+.main-card-background {
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+}
+
+.main-card-greyContainer {
+  width: 90%;
+  height: auto;
+  margin: 1.5%;
+  background-color: #FAFDFF;
+  border: 2px solid #C7D3D8;
+  padding: 2%;
+}
+
+.main-card-yellowContainer {
+  width: 40%;
+  height: auto;
+  margin: 1.5%;
+  background-color: #FFE89D;
+  border: 2px solid #C7D3D8;
+  padding: 2%;
+}
+
+
+.main-card-yellowContainer {
+  width: 90%;
+}
+
+
+header {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* text-align: center; */
+}
+
+.header-searchbar-buttonAndInput {
+  margin: 2%;
+  width: 100%;
+  align-self: center;
+  padding: 1%;
+
+  /* height: 100% */
+}
+
+.header-searchbar-button {
+  /* padding: 4%; */
+  width: 10%;
+}
+
+.header-searchbar-input {
+  padding: 4%;
+  width: 90%;
+}
+
+.header-title {
+  font-size: 2em;
 }
