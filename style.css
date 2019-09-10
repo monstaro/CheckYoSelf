@@ -1,4 +1,4 @@
-5* {
+* {
   margin: 0;
   padding: 0;
 }
@@ -180,10 +180,7 @@ header {
   flex-direction: column;
 }
 
-.sidebar-buttonsList-button:disabled {
-  background-color: #60606a;
-  border-style: none;
-}
+
 
 .button:focus {
   outline: none;
@@ -198,6 +195,12 @@ header {
 
 .demoButton:hover {
   cursor: pointer;
+}
+
+.sidebar-buttonsList-button:disabled {
+  background-color: #60606a;
+  border-style: none;
+  cursor: not-allowed;
 }
 
 .main-card-background {
