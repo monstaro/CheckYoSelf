@@ -318,11 +318,11 @@ function htmlToEmbed(toDo) {
       </section>
       <hr>
         <section class="main-card-buttons">
-          <button class="card-button-urgent">
+          <button class="card-button-urgent button">
             <img id="${toDo.buttonID}" src="./images/urgent.svg" class="card-button-image button-image-urgent" />
             <p class="card-button-text">Urgent</p>
           </button>
-          <button class="card-button-delete">
+          <button class="card-button-delete button">
             <img src="./images/delete.svg" class="card-button-image button-image-delete" />
             <p class="card-button-text">Delete</p>
           </button>
