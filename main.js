@@ -16,9 +16,6 @@ var allTodoCardsArray = [];
 
 deleteDemoCardIcon.addEventListener('click', closeDemoCard);
 taskAddButton.addEventListener('click', addNewTask);
-// taskAddButton.addEventListener('click', addNewTask);
-// clearAllButton.addEventListener('click', clearAll);
-// work on this later!!!!!! <------
 sideBarInputSection.addEventListener('click', disableClearAllButton);
 clearAllButton.addEventListener('blur', disableClearAllButton);
 clearAllButton.addEventListener('click', clearAll);
