@@ -91,7 +91,7 @@ function getCardsBack() {
 }
 
 function disableClearAllButton() {
-  if (taskTitleBox.value === "" && taskListParent.value === "") {
+  if (taskTitleBox.value === "" || taskListParent.value === "") {
     clearAllButton.disabled = true;
   } else {
     clearAllButton.disabled = false;
