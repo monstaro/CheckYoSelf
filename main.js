@@ -11,8 +11,10 @@ var makeToDoCard = document.getElementById('makeToDoCard');
 var sideBarInputSection = document.querySelector('.sidebar-toDoCreator-inputsAndList');
 var parentSectionCards = document.getElementById('parentSectionCards');
 var deleteDemoCardIcon = document.querySelector('.demoButton')
+var searchInput = document.getElementById("searchbarInput");
 var allTasksArray = [];
 var allTodoCardsArray = [];
+var filterByUrgentButton = document.getElementById("filterByUrgent");
 
 deleteDemoCardIcon.addEventListener('click', closeDemoCard);
 taskAddButton.addEventListener('click', addNewTask);
@@ -30,6 +32,8 @@ sideBarInputSection.addEventListener('click', disableAddTaskListButton);
 parentSectionCards.addEventListener('click', checkOffTask);
 parentSectionCards.addEventListener('click', deleteCard);
 parentSectionCards.addEventListener('click', makeCardUrgent);
+searchInput.addEventListener('blur', searchByTitle);
+filterByUrgentButton.addEventListener('click', filterByUrgent)
 
 getCardsBack();
 
@@ -225,6 +229,29 @@ function cardUrgentCondition() {
       cardButtonElement.src = "./images/urgent.svg";
     }
     callSaveToStorage(allTodoCardsArray[i]);
+  }
+}
+
+function searchByTitle() {
+  console.log("and I ran");
+  for (var i = 0; i < allTodoCardsArray.length; i++) {
+    console.log(allTodoCardsArray[i].title);
+    if (allTodoCardsArray[i].title !== searchInput.value) {
+      console.log(allTodoCardsArray[i].title, searchInput.value);
+      var cardContainer = document.getElementById(allTodoCardsArray[i].id)
+      console.log(cardContainer);
+      cardContainer.classList.add("hidden");
+    }
+  }
+}
+
+function filterByUrgent() {
+  for (var i = 0; i < allTodoCardsArray.length; i++) {
+    if (allTodoCardsArray[i].urgent !== true) {
+      var cardContainer = document.getElementById(allTodoCardsArray[i].id)
+      cardContainer.classList.toggle("hidden");
+    }
+    filterByUrgentButton.classList.toggle('sidebar-buttonsList-button-active');
   }
 }
 
