@@ -18,10 +18,8 @@ var filterByUrgentButton = document.getElementById("filterByUrgent");
 
 deleteDemoCardIcon.addEventListener('click', closeDemoCard);
 taskAddButton.addEventListener('click', addNewTask);
-// taskAddButton.addEventListener('click', addNewTask);
-// clearAllButton.addEventListener('click', clearAll);
-// work on this later!!!!!! <------
 sideBarInputSection.addEventListener('click', disableClearAllButton);
+clearAllButton.addEventListener('blur', disableClearAllButton);
 clearAllButton.addEventListener('click', clearAll);
 taskTitleBox.addEventListener('keyup', disableClearAllButton);
 makeToDoCard.addEventListener('click', addNewCard);
@@ -44,7 +42,7 @@ function closeDemoCard(event) {
 function addNewTask() {
   var taskListParent = document.getElementById('taskListParent');
   taskListParent.insertAdjacentHTML('beforeend', `<li class="toDoCreator-taskList-listItem">
-    <img src="./images/delete.svg" class="taskList-listItem-delete">
+    <img src="./images/delete.svg" class="taskList-listItem-delete button">
     <p class="taskList-listItem-text" id="taskText">${taskInputField.value}</p>
   </li>`);
   taskInputField.value = "";
@@ -95,7 +93,7 @@ function getCardsBack() {
 }
 
 function disableClearAllButton() {
-  if (taskTitleBox.value === "" && taskListParent.value === "") {
+  if (taskTitleBox.value === "" || taskListParent.value === "") {
     clearAllButton.disabled = true;
   } else {
     clearAllButton.disabled = false;
@@ -259,7 +257,7 @@ function taskHtmlToEmbed(toDo) {
   var fullStringArray = [];
   for (var i = 0; i < toDo.tasks.length; i++) {
     fullStringArray.push(`<li class="main-task-items" id="${toDo.tasks[i].id}">
-    <img src="./images/checkbox.svg" class="main-task-icons">
+    <img src="./images/checkbox.svg" class="main-task-icons button">
     <p class="main-task-text">${toDo.tasks[i].taskDescription}</p>
   </li>`)
   }
@@ -267,12 +265,12 @@ function taskHtmlToEmbed(toDo) {
 }
 
 function taskHtmlToEmbedActive(task) {
-  return `<img src="./images/checkbox-active.svg" class="main-task-icons">
+  return `<img src="./images/checkbox-active.svg" class="main-task-icons button">
     <p class="main-task-text-checked">${task.taskDescription}</p>`
 }
 
 function taskHtmlToEmbedInactive(task) {
-  return `<img src="./images/checkbox.svg" class="main-task-icons">
+  return `<img src="./images/checkbox.svg" class="main-task-icons button">
     <p class="main-task-text">${task.taskDescription}</p>`
 }
 
