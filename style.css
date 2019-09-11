@@ -3,6 +3,15 @@
   padding: 0;
 }
 
+.hidden {
+  display: none;
+}
+
+button.sidebar-buttonsList-button-active {
+  background-color: #782716;
+  cursor: pointer;
+}
+
 body {
   font-family: 'Open Sans';
 }
@@ -201,6 +210,11 @@ header {
   background-color: #60606a;
   border-style: none;
   cursor: not-allowed;
+}
+
+button.sidebar-buttonsList-button-active {
+  background-color: #782716;
+  cursor: pointer;
 }
 
 .main-card-background {
