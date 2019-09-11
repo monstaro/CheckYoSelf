@@ -11,6 +11,8 @@ var makeToDoCard = document.getElementById('makeToDoCard');
 var sideBarInputSection = document.querySelector('.sidebar-toDoCreator-inputsAndList');
 var parentSectionCards = document.getElementById('parentSectionCards');
 var deleteDemoCardIcon = document.querySelector('.demoButton')
+var allTasksArray = [];
+var allTodoCardsArray = [];
 
 deleteDemoCardIcon.addEventListener('click', closeDemoCard);
 taskAddButton.addEventListener('click', addNewTask);
@@ -29,6 +31,7 @@ parentSectionCards.addEventListener('click', checkOffTask);
 parentSectionCards.addEventListener('click', deleteCard);
 parentSectionCards.addEventListener('click', makeCardUrgent);
 
+getCardsBack();
 
 function closeDemoCard(event) {
   event.target.parentNode.parentNode.parentNode.remove();
@@ -45,31 +48,30 @@ function addNewTask() {
   taskInputField.value = "";
 }
 
-var allTasksArray = [];
-var allTodoCardsArray = [];
-
-// function getCardsBack() {
-//   JSON.parse(localStorage.getItem("bigArray"))
-// }
-
 
 function addNewCard() {
+  instantiateTaskList();
+  instantiateToDoCard();
+  clearAll();
+}
+
+function instantiateTaskList() {
   var taskListArray = document.querySelectorAll("#taskText");
-  var parentSectionCards = document.getElementById('parentSectionCards');
-  var listTitle = document.querySelector('#taskTitleField').value;
   for (var i = 0; i < taskListArray.length; i++) {
-    var taskListObject = new Task(taskListArray[i].innerText, (Date.now() + Math.random()));
+    var taskListObject = new Task(taskListArray[i].innerText);
     allTasksArray.push(taskListObject);
   }
-  var toDoObj = new TodoList((Date.now() + Math.random()),listTitle, allTasksArray, (Date.now() + Math.random()));
+}
+
+function instantiateToDoCard() {
+  var parentSectionCards = document.getElementById('parentSectionCards');
+  var listTitle = document.querySelector('#taskTitleField').value;
+  var toDoObj = new TodoList(listTitle, allTasksArray);
   allTodoCardsArray.push(toDoObj);
   parentSectionCards.insertAdjacentHTML('afterbegin', htmlToEmbed(toDoObj));
   var cardtaskListParent = document.getElementById('cardTasklistParent');
   cardtaskListParent.insertAdjacentHTML('beforeend', taskHtmlToEmbed(toDoObj));
-  toDoObj.saveToStorage(allTodoCardsArray);
-  allTasksArray = [];
-  taskTitleBox.value = "";
-  taskListParent.innerText = "";
+  callSaveToStorage(toDoObj);
 }
 
 function clearAll() {
@@ -77,6 +79,66 @@ function clearAll() {
   taskTitleBox.value = "";
   taskListParent.innerText = "";
 }
+
+function getCardsBack() {
+  console.log("getCardsBackwascalled")
+    var retrievedCards = JSON.parse(localStorage.getItem("bigArray"));
+    console.log(retrievedCards)
+    for (var i = 0; i < retrievedCards.length; i++) {
+      var toDoObj = new TodoList(retrievedCards[i].title, retrievedCards[i].array, retrievedCards[i].id, retrievedCards[i].buttonID, retrievedCards[i].urgent)
+      parentSectionCards.insertAdjacentHTML('afterbegin', htmlToEmbed(toDoObj));
+      // var cardtaskListParent = document.getElementById('cardTasklistParent');
+      // cardtaskListParent.insertAdjacentHTML('beforeend', taskHtmlToEmbed(toDoObj));
+      if (retrievedCards[i].urgent === true) {
+        console.log("there is an urgent card")
+        cardUrgentConditionReturn(retrievedCards);
+      }
+
+    }
+  }
+
+  function cardUrgentConditionReturn(param) {
+    for (var i = 0; i < param.length; i++) {
+      if (param[i].urgent === true) {
+        var cardStylingContainer = document.getElementById(`${param[i].id}`);
+        console.log(param[i].id);
+        cardStylingContainer.className = "main-card-yellowContainer";
+        var cardButtonElement = document.getElementById(`${param[i].buttonID}`);
+        cardButtonElement.src = "./images/urgent-active.svg";
+        // callSaveToStorage(param[i]);
+      } else {
+        var cardStylingContainer = document.getElementById(`${param[i].id}`);
+        cardStylingContainer.className = "main-card-greyContainer";
+        var cardButtonElement = document.getElementById(`${param[i].buttonID}`);
+        cardButtonElement.src = "./images/urgent.svg";
+      }
+    }
+  }
+
+// function addNewCard() {
+//   var taskListArray = document.querySelectorAll("#taskText");
+//   var parentSectionCards = document.getElementById('parentSectionCards');
+//   var listTitle = document.querySelector('#taskTitleField').value;
+//   for (var i = 0; i < taskListArray.length; i++) {
+//     var taskListObject = new Task(taskListArray[i].innerText, (Date.now() + Math.random()));
+//     allTasksArray.push(taskListObject);
+//   }
+//   var toDoObj = new TodoList((Date.now() + Math.random()),listTitle, allTasksArray, (Date.now() + Math.random()));
+//   allTodoCardsArray.push(toDoObj);
+//   parentSectionCards.insertAdjacentHTML('afterbegin', htmlToEmbed(toDoObj));
+//   var cardtaskListParent = document.getElementById('cardTasklistParent');
+//   cardtaskListParent.insertAdjacentHTML('beforeend', taskHtmlToEmbed(toDoObj));
+//   toDoObj.saveToStorage(allTodoCardsArray);
+//   allTasksArray = [];
+//   taskTitleBox.value = "";
+//   taskListParent.innerText = "";
+// }
+//
+// function clearAll() {
+//   allTasksArray = [];
+//   taskTitleBox.value = "";
+//   taskListParent.innerText = "";
+// }
 
 function disableClearAllButton() {
   if (taskTitleBox.value === "" && taskListParent.value === "") {
