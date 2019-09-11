@@ -1,8 +1,8 @@
 class TodoList {
-  constructor(id, title, array, buttonID) {
+  constructor(title, array, id, buttonID, urgent) {
     this.id = id || (Date.now() + Math.random());
     this.title = title;
-    this.urgent = false;
+    this.urgent = urgent || false;
     this.tasks = array;
     this.buttonID = buttonID || (Date.now() + Math.random());
   }
