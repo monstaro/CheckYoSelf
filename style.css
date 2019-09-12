@@ -7,6 +7,10 @@
   display: none;
 }
 
+.hiddenNotUrgent {
+  display: none;
+}
+
 button.sidebar-buttonsList-button-active {
   background-color: #782716;
   cursor: pointer;
@@ -215,7 +219,7 @@ button.sidebar-buttonsList-button-active {
 }
 .main-card-background {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: wrap;
   flex-flow: column wrap;
   overflow: auto;
@@ -268,7 +272,6 @@ button.sidebar-buttonsList-button-active {
 
 .main-task-text {
   padding: 2%;
-  width: auto;
 }
 
 .main-task-text-checked {

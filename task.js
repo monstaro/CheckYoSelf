@@ -4,7 +4,4 @@ class Task {
     this.id = id || (Date.now() + Math.random());
     this.checkedOff = false;
   }
-  updateTask(){
-
-  }
 }

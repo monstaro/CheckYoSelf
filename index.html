@@ -2,89 +2,90 @@
 <html lang="en" dir="ltr">
   <head>
     <title>Check Yo'Self</title>
-      <link rel="stylesheet" type="text/css" href="style.css">
-      <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:400,800&display=swap" rel="stylesheet" />
   </head>
-<body>
-  <header>
-    <h1 class="header-title">Check <span class="yo">Yo'</span> Self</h1>
-    <section class="header-searchbar-buttonAndInput">
-      <button class="header-searchbar-button button">
-        <img src="./images/search.svg" class="searchbar-button-image">
-      </button>
-      <input type="text" placeholder="Search" class="header-searchbar-input" id="searchbarInput">
-      </input>
-    </section>
-  </header>
-  <section class="sidebar-and-main">
-    <section class="sidebar" id="sidebarAllItems">
-      <section class="sidebar-toDoCreator-inputsAndList">
-        <label for="task-title" class="todoCreator-taskInput-textInputLabel">Task Title</label>
-        <input type="text" name="task-title" class="todoCreator-taskInput-textInput" id="taskTitleField"></input>
-        <section class="sidebar-toDoCreator-taskList">
-          <ul class="toDoCreator-taskList-fullList" id="taskListParent">
-          </ul>
+  <body>
+    <header>
+      <h1 class="header-title">Check <span class="yo">Yo'</span> Self</h1>
+      <section class="header-searchbar-buttonAndInput">
+        <button class="header-searchbar-button button" id="searchButton">
+          <img src="./images/search.svg" class="searchbar-button-image">
+        </button>
+        <input type="text" placeholder="Search" class="header-searchbar-input" id="searchbarInput">
+        </input>
+      </section>
+    </header>
+    <section class="sidebar-and-main">
+      <section class="sidebar" id="sidebarAllItems">
+        <section class="sidebar-toDoCreator-inputsAndList">
+          <label for="task-title" class="todoCreator-taskInput-textInputLabel">Task Title</label>
+          <input type="text" name="task-title" class="todoCreator-taskInput-textInput" id="taskTitleField"></input>
+          <section class="sidebar-toDoCreator-taskList">
+            <ul class="toDoCreator-taskList-fullList" id="taskListParent">
+              <!-- Dynamically created content -->
+            </ul>
+          </section>
+          <section class="sidebar-toDoCreator-itemInput">
+            <label for="task-item" class="todoCreator-taskInput-itemInputLabel">Task Item</label>
+            <div class="itemInput-container-textAndButton">
+              <input type="text" name="task-item" class="todoCreator-itemInput-textInput" id="taskInputField" onkeyup="disableTaskAddButton()"></input>
+              <button disabled class="todoCreator-itemInput-button button" id="taskAddButton">+</button>
+            </div>
+          </section>
         </section>
-        <section class="sidebar-toDoCreator-itemInput">
-          <label for="task-item" class="todoCreator-taskInput-itemInputLabel">Task Item</label>
-          <div class="itemInput-container-textAndButton">
-            <input type="text" name="task-item" class="todoCreator-itemInput-textInput" id="taskInputField" onkeyup="disableTaskAddButton()"></input>
-            <button disabled class="todoCreator-itemInput-button button" id="taskAddButton">+</button>
-          </div>
+        <section class="sidebar-buttonsList-section">
+          <button class="sidebar-buttonsList-button button" id="makeToDoCard" disabled>Make Task List</button>
+          <button class="sidebar-buttonsList-button button" id="clearAllButton" disabled>Clear All</button>
+          <hr class="sidebar-linebreak">
+          <br class="sidebar-linebreak">
+          <button class="sidebar-buttonsList-button button" id="filterByUrgent">Filter by Urgency</button>
         </section>
       </section>
-      <section class="sidebar-buttonsList-section">
-        <button class="sidebar-buttonsList-button button" id="makeToDoCard" disabled>Make Task List</button>
-        <button class="sidebar-buttonsList-button button" id="clearAllButton" disabled>Clear All</button>
-        <hr class="sidebar-linebreak">
-        <br class="sidebar-linebreak">
-        <button class="sidebar-buttonsList-button button" id="filterByUrgent">Filter by Urgency</button>
-      </section>
+      <main class="main-card-background clearfix" id="parentSectionCards">
+        <div class="main-card-greyContainer">
+          <section class="main-card-title">
+            <h3>You don't have any tasks yet!</h3>
+          </section>
+          <hr>
+          <section class="main-card-list">
+            <ul class="main-task-checkbox">
+              <li class="main-task-items">
+                <img src="./images/checkbox-active.svg" class="main-task-icons">
+                <p class="main-task-text">Add a new to-do list on the sidebar.</p>
+              </li>
+              <li class="main-task-items">
+                <img src="./images/checkbox-active.svg" class="main-task-icons">
+                <p class="main-task-text">Give your to-do list some tasks. </p>
+              </li>
+              <li class="main-task-items">
+                <img src="./images/checkbox-active.svg" class="main-task-icons">
+                <p class="main-task-text">Check them off by clicking on the button to my left.</p>
+              <li class="main-task-items">
+                <img src="./images/checkbox-active.svg" class="main-task-icons">
+                <p class="main-task-text">If important, mark as 'urgent' below.</p>
+              <li class="main-task-items">
+                <img src="./images/checkbox-active.svg" class="main-task-icons">
+                <p class="main-task-text">Press 'delete' when you're all done!</p>
+              </li>
+            </ul>
+          </section>
+          <hr>
+          <section class="main-card-buttons">
+            <button class="card-button-urgent button">
+              <img src="./images/urgent.svg" class="card-button-image">
+              <p class="card-button-text">Urgent</p>
+            </button>
+            <button class="card-button-delete demoButton">
+              <img src="./images/delete.svg" class="card-button-image">
+              <p class="card-button-text">Delete</p>
+            </button>
+          </section>
+        </div>
+      </main>
     </section>
-    <main class="main-card-background clearfix" id="parentSectionCards">
-      <div class="main-card-greyContainer">
-        <section class="main-card-title">
-          <h3>You don't have any tasks yet!</h3>
-        </section>
-        <hr>
-        <section class="main-card-list">
-          <ul class="main-task-checkbox">
-            <li class="main-task-items">
-              <img src="./images/checkbox-active.svg" class="main-task-icons">
-              <p class="main-task-text">Add a new to-do list on the sidebar.</p>
-            </li>
-            <li class="main-task-items">
-              <img src="./images/checkbox-active.svg" class="main-task-icons">
-              <p class="main-task-text">Give your to-do list some tasks. </p>
-            </li>
-            <li class="main-task-items">
-              <img src="./images/checkbox-active.svg" class="main-task-icons">
-              <p class="main-task-text">Check them off by clicking on the button to my left.</p>
-            <li class="main-task-items">
-              <img src="./images/checkbox-active.svg" class="main-task-icons">
-              <p class="main-task-text">If important, mark as 'urgent' below.</p>
-            <li class="main-task-items">
-              <img src="./images/checkbox-active.svg" class="main-task-icons">
-              <p class="main-task-text">Press 'delete' when you're all done!</p>
-            </li>
-          </ul>
-        </section>
-        <hr>
-        <section class="main-card-buttons">
-          <button class="card-button-urgent button">
-            <img src="./images/urgent.svg" class="card-button-image">
-            <p class="card-button-text">Urgent</p>
-          </button>
-          <button class="card-button-delete demoButton">
-            <img src="./images/delete.svg" class="card-button-image">
-            <p class="card-button-text">Delete</p>
-          </button>
-        </section>
-      </div>
-    </main>
-  </section>
-  <script type="text/javascript" src="task.js"></script>
-  <script type="text/javascript" src="todo-list.js"></script>
-  <script type="text/javascript" src="main.js"></script>
-</body>
+    <script type="text/javascript" src="task.js"></script>
+    <script type="text/javascript" src="todo-list.js"></script>
+    <script type="text/javascript" src="main.js"></script>
+  </body>
 </html>
