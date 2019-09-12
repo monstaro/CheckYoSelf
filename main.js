@@ -1,12 +1,9 @@
-//Make new task and add to the array
-
 var taskAddButton = document.getElementById('taskAddButton');
 var taskInputField = document.getElementById('taskInputField');
 var taskListParent = document.getElementById('taskListParent');
 var clearAllButton = document.getElementById('clearAllButton');
 var taskTitleBox = document.getElementById('taskTitleField');
 var taskListParent = document.getElementById('taskListParent');
-// var sidebarAllItems = document.getElementById('sidebarAllItems');
 var makeToDoCard = document.getElementById('makeToDoCard');
 var sideBarInputSection = document.querySelector('.sidebar-toDoCreator-inputsAndList');
 var parentSectionCards = document.getElementById('parentSectionCards');
@@ -15,12 +12,11 @@ var searchInput = document.getElementById("searchbarInput");
 var allTasksArray = [];
 var allTodoCardsArray = [];
 var filterByUrgentButton = document.getElementById("filterByUrgent");
+// var cardContainer = document.getElementById(allTodoCardsArray[i].id)
+//do i need this?
 
 deleteDemoCardIcon.addEventListener('click', closeDemoCard);
 taskAddButton.addEventListener('click', addNewTask);
-// taskAddButton.addEventListener('click', addNewTask);
-// clearAllButton.addEventListener('click', clearAll);
-// work on this later!!!!!! <------
 sideBarInputSection.addEventListener('click', disableClearAllButton);
 clearAllButton.addEventListener('click', clearAll);
 taskTitleBox.addEventListener('keyup', disableClearAllButton);
@@ -32,8 +28,9 @@ sideBarInputSection.addEventListener('click', disableAddTaskListButton);
 parentSectionCards.addEventListener('click', checkOffTask);
 parentSectionCards.addEventListener('click', deleteCard);
 parentSectionCards.addEventListener('click', makeCardUrgent);
-searchInput.addEventListener('blur', searchByTitle);
-filterByUrgentButton.addEventListener('click', filterByUrgent)
+searchInput.addEventListener('input', searchByTitle);
+filterByUrgentButton.addEventListener('click', filterByUrgent);
+// filterByUrgentButton.addEventListener('click', noSearchWhenHidden);
 
 getCardsBack();
 
@@ -233,17 +230,35 @@ function cardUrgentCondition() {
 }
 
 function searchByTitle() {
+  // if (searchInput.value === "") {
+  //   return;
+  // }
   console.log("and I ran");
+  console.log(searchInput.value);
   for (var i = 0; i < allTodoCardsArray.length; i++) {
-    console.log(allTodoCardsArray[i].title);
-    if (allTodoCardsArray[i].title !== searchInput.value) {
-      console.log(allTodoCardsArray[i].title, searchInput.value);
-      var cardContainer = document.getElementById(allTodoCardsArray[i].id)
-      console.log(cardContainer);
+    var cardContainer = document.getElementById(allTodoCardsArray[i].id)
+    if (allTodoCardsArray[i].title.includes(searchInput.value)) {
+      cardContainer.classList.remove("hidden");
+    } else {
       cardContainer.classList.add("hidden");
     }
   }
 }
+
+// function searchByTitle() {
+//   console.log("and I ran");
+//   console.log(searchInput.value);
+//   for (var i = 0; i < allTodoCardsArray.length; i++) {
+//     var cardContainer = document.getElementById(allTodoCardsArray[i].id)
+//     if (allTodoCardsArray[i].title.includes(searchInput.value)) {
+//       cardContainer.classList.remove("hidden");
+//     } else if (searchInput.value === "") {
+//       return;
+//     } else {
+//       cardContainer.classList.add("hidden")
+//     }
+//   }
+// }
 
 function filterByUrgent() {
   for (var i = 0; i < allTodoCardsArray.length; i++) {
@@ -254,6 +269,30 @@ function filterByUrgent() {
     filterByUrgentButton.classList.toggle('sidebar-buttonsList-button-active');
   }
 }
+
+// function noSearchWhenHidden() {
+//   console.log("and I raaaan");
+//   for (var i = 0; i < allTodoCardsArray.length; i++) {
+//     var cardContainer = document.getElementById(allTodoCardsArray[i].id)
+//     if (cardContainer.classList.contains("hidden")) {
+//       allTodoCardsArray[i].title = "ajsdfjcoii";
+//       console.log(allTodoCardsArray[i].title);
+//     } else {
+//       var storageTitle = getTitleFromStorage();
+//       allTodoCardsArray[i].title = storageTitle;
+//       console.log(allTodoCardsArray[i].title);
+//     }
+//   }
+// }
+//
+// function getTitleFromStorage() {
+//   var retrievedCards = JSON.parse(localStorage.getItem("bigArray"));
+//   for (var i = 0; i < retrievedCards.length; i++) {
+//     if (retrievedCards[i].id === allTodoCardsArray[i].id) {
+//       return retrievedCards[i].title;
+//     }
+//   }
+// }
 
 function taskHtmlToEmbed(toDo) {
   var fullStringArray = [];
