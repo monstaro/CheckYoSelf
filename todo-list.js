@@ -11,7 +11,7 @@ class TodoList {
   }
 
   deleteFromStorage() {
-    //not needed for this project
+
   }
   updateToDo() {
     this.urgent = !this.urgent;
