@@ -77,6 +77,8 @@ function clearAll() {
   allTasksArray = [];
   taskTitleBox.value = "";
   taskListParent.innerText = "";
+  disableAddTaskListButton();
+  disableClearAllButton();
 }
 
 function getCardsBack() {
@@ -93,12 +95,15 @@ function getCardsBack() {
 }
 
 function disableClearAllButton() {
-  if (taskTitleBox.value === "" || taskListParent.value === "") {
+  if (taskTitleBox.value === "" || taskListParent.innerText === "" ) {
     clearAllButton.disabled = true;
   } else {
     clearAllButton.disabled = false;
   }
 }
+
+// onkeyup="disableTaskAddButton()
+// sideBarInputSection.addEventListener('click', disableAddTaskListButton)
 
 function disableTaskAddButton() {
   if (taskTitleField.value === "" || taskInputField.value === "") {
