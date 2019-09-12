@@ -8,6 +8,11 @@
 -   Understand the difference between the data model and how the data is displayed on the DOM
 -   Ability to match/recreate a UI and create a great UX
 
+#### Team
+- Vee Andrade
+- Cody Smith
+- Allie McCarthy
+
 #### Abstract 
 The purpose of this project was to guide our exploration into the foundations of classes, objects, and local storage.
 The objective was to design an app that would take in user input in the form of a 'to-do' list, the user was able to
