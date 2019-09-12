@@ -103,9 +103,6 @@ function disableClearAllButton() {
   }
 }
 
-// onkeyup="disableTaskAddButton()
-// sideBarInputSection.addEventListener('click', disableAddTaskListButton)
-
 function disableTaskAddButton() {
   if (taskTitleField.value === "" || taskInputField.value === "") {
     taskAddButton.disabled = true;
