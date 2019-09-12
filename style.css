@@ -210,14 +210,21 @@ button.sidebar-buttonsList-button-active {
   cursor: pointer;
 }
 
+.clearfix {
+  overflow: auto;
+}
 .main-card-background {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  overflow: scroll;
+  flex-flow: column wrap;
+  overflow: auto;
   width: 66%;
   margin: 1.5%;
+  column-count: 2;
+  column-gap: 1em;
 }
+
 
 .main-card-greyContainer {
   width: 40%;
