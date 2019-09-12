@@ -52,7 +52,7 @@ header {
   background-color: #C8D3D9;
   border-radius: 5% 0 0 5%;
   height: inherit;
-  width: 13%;
+  width: 10%;
 }
 
 .header-searchbar-input {
@@ -102,11 +102,11 @@ header {
 
 .todoCreator-taskInput-textInput {
   border: solid 2px #1f1f3d;
-  width: 97%;
-  padding: 4% 0 4% 2%;
+  width: auto;
+  padding: 2%;
   font-size: 1.4em;
   border-radius: 3%;
-  height: 9%;
+  height: 37px;
 }
 
 .sidebar-toDoCreator-taskList {
@@ -166,9 +166,8 @@ header {
   width: 80%;
   padding: 2%;
   font-size: 1.4em;
-  border-top-left-radius: : 3%;
+  border-top-left-radius: 3%;
   border-bottom-left-radius: 3%;
-  /* margin: 0 0 0 1em; */
 }
 
 .todoCreator-itemInput-button {
@@ -179,7 +178,7 @@ header {
   font-size: 3.5em;
   font-weight: lighter;
   border: .1px solid #1f1f3d;
-  border-top-right-radius: : 3%;
+  border-top-right-radius: 3%;
   border-bottom-right-radius: 3%;
   padding: 0;
 }
@@ -188,8 +187,6 @@ header {
   display: flex;
   flex-direction: column;
 }
-
-
 
 .button:focus {
   outline: none;
@@ -217,17 +214,25 @@ button.sidebar-buttonsList-button-active {
   cursor: pointer;
 }
 
+.clearfix {
+  overflow: auto;
+}
 .main-card-background {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  overflow: scroll;
+  flex-flow: column wrap;
+  overflow: auto;
   width: 66%;
   margin: 1.5%;
-  }
+  column-count: 2;
+  column-gap: 1em;
+}
+
 
 .main-card-greyContainer {
   width: 40%;
+  height: min-content;
   margin: 1.5%;
   background-color: #FAFDFF;
   border: 2px solid #C7D3D8;
@@ -314,13 +319,12 @@ button.sidebar-buttonsList-button-active {
 @media all and (max-width: 600px)
 {
 .sidebar-and-main {
-  /* display: block;
-  float: none;  */
   display: flex;
   flex-direction: column;
   width: 100%;
   height: auto;
-    }
+}
+
 .sidebar {
   width: auto;
   padding: 2%;
@@ -350,7 +354,6 @@ button.sidebar-buttonsList-button-active {
   padding: 2%;
 }
 
-
 .main-card-yellowContainer {
   width: 90%;
 }
@@ -377,7 +380,6 @@ header {
   padding: 4%;
   width: 90%;
 }
-
 
 @media all and (max-width: 350px)
 {
@@ -446,4 +448,6 @@ header {
 
 .header-title {
   font-size: 2em;
+    }
+  }
 }
